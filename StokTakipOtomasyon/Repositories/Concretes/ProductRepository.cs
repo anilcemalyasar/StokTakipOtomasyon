@@ -35,8 +35,8 @@ namespace StokTakipOtomasyon.Repositories.Concretes
                 WareHouse = warehouse
             };
 
-            warehouse.Products.Add(product);
             await _dbContext.Products.AddAsync(product);
+            warehouse.Products.Add(product);
             await _dbContext.SaveChangesAsync();
             return product;
         }
