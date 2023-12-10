@@ -11,8 +11,8 @@ namespace StokTakipOtomasyon.Models.DTO
         public string City { get; set; }
         public string District { get; set; }
 
-        public List<Product> Product { get; set; }
-        public CompanyDto CompanyDto { get; set; }
+        // public List<ProductDto> Products { get; set; }
+        public CompanyDto Company { get; set; }
         
     }
 }

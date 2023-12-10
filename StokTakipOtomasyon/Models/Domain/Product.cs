@@ -12,6 +12,6 @@ namespace StokTakipOtomasyon.Models.Domain
         public int StockAmount { get; set; }
 
         [JsonIgnore]
-        public WareHouse WareHouse { get; set; } = null!; // Required reference navigation to principal
+        public WareHouse WareHouse { get; set; }// Required reference navigation to principal
     }
 }

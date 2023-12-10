@@ -13,9 +13,9 @@ namespace StokTakipOtomasyon.Models.Domain
 
         // Navigation Properties
         [JsonIgnore]
-        public ICollection<Product> Products { get; } = new List<Product>(); // Collection navigation containing dependents
+        public ICollection<Product> Products { get; set; }// Collection navigation containing dependents
         [JsonIgnore]
-        public Company Company { get; set; } = null!; // Required reference navigation to principal
+        public Company Company { get; set; } // Required reference navigation to principal
 
 
     }

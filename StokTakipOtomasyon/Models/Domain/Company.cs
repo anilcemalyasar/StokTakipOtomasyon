@@ -17,7 +17,7 @@ namespace StokTakipOtomasyon.Models.Domain
         public string CompanyCode { get; set; }
 
         [JsonIgnore]
-        public ICollection<WareHouse> WareHouses { get; } = new List<WareHouse>(); // Collection navigation containing dependents
+        public ICollection<WareHouse> WareHouses { get; set; }// Collection navigation containing dependents
 
     }
 }
