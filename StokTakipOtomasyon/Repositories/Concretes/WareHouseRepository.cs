@@ -12,7 +12,7 @@ namespace StokTakipOtomasyon.Repositories.Concretes
         {
             _dbContext = dbContext;
         }
-        public async Task<WareHouse?> AddWareHouse(WareHouse wareHouse)
+        public async Task<WareHouse?> CreateAsync(WareHouse wareHouse)
         {
             var company = await _dbContext.Companies
                 .Include(c => c.WareHouses)
@@ -23,12 +23,12 @@ namespace StokTakipOtomasyon.Repositories.Concretes
             return wareHouse;
         }
 
-        public async Task<WareHouse?> DeleteWareHouse(int id)
+        public async Task<WareHouse?> DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<WareHouse>> GetAllWareHousesAsync()
+        public async Task<List<WareHouse>> GetAllAsync()
         {
             return await _dbContext.WareHouses
                 .Include("Products")
@@ -36,7 +36,7 @@ namespace StokTakipOtomasyon.Repositories.Concretes
                 .ToListAsync();
         }
 
-        public async Task<WareHouse?> GetWareHouseByIdAsync(int id)
+        public async Task<WareHouse?> GetByIdAsync(int id)
         {
             return await _dbContext.WareHouses
                 .Include("Products")
@@ -44,9 +44,27 @@ namespace StokTakipOtomasyon.Repositories.Concretes
                 .FirstOrDefaultAsync(w => w.Id == id);
         }
 
-        public async Task<WareHouse?> UpdateWareHouseAsync(int id, WareHouse wareHouse)
+        public async Task<WareHouse?> UpdateAsync(int id, WareHouse wareHouse)
         {
-            throw new NotImplementedException();
+            var existingWarehouse = await _dbContext.WareHouses
+                                            .Include("Products")
+                                            .Include("Company")
+                                            .FirstOrDefaultAsync(w => w.Id == id);
+
+            if (existingWarehouse == null)
+            {
+                return null;
+            }
+
+            existingWarehouse.Name = wareHouse.Name;
+            existingWarehouse.Region = wareHouse.Region;
+            existingWarehouse.Country = wareHouse.Country;
+            existingWarehouse.City = wareHouse.City;
+            existingWarehouse.District = wareHouse.District;
+
+            await _dbContext.SaveChangesAsync();
+            return existingWarehouse;
+
         }
     }
 }
