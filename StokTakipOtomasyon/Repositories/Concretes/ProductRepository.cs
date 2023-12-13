@@ -51,9 +51,43 @@ namespace StokTakipOtomasyon.Repositories.Concretes
             return await _dbContext.Products.Include("WareHouse").FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<List<Product>> GetProductsAsync()
+        public async Task<List<Product>> GetAllAsync(string? filterOn = null, string? filterQuery = null,
+                                                    string? sortBy = null, bool isAscending = true,
+                                                    int pageNumber = 1, int pageSize = 5)
         {
-            return await _dbContext.Products.Include("WareHouse").ToListAsync();
+            // Get IQueryable for Filtering, Sorting and Paging
+            var products = _dbContext.Products.Include("WareHouse").AsQueryable();
+
+            // Filtering
+            if (String.IsNullOrWhiteSpace(filterOn) == false && String.IsNullOrWhiteSpace(filterQuery) == false)
+            {
+                if (filterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    products = products.Where(p => p.Name.Contains(filterQuery));
+                }
+                else if (filterOn.Equals("Description", StringComparison.OrdinalIgnoreCase))
+                {
+                    products = products.Where(p => p.Description.Contains(filterQuery));
+                }
+            }
+
+            // Sorting
+            if (String.IsNullOrWhiteSpace(sortBy) == false)
+            {
+                if (sortBy.Equals("Price", StringComparison.OrdinalIgnoreCase))
+                {
+                    products = isAscending ? products.OrderBy(p => p.Price) : products.OrderByDescending(p => p.Price);
+                }
+                else if (sortBy.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    products = isAscending ? products.OrderBy(p => p.Name) : products.OrderByDescending(p => p.Name);
+                }
+            }
+
+            // Pagination
+            var skipResults = (pageNumber - 1) * pageSize;
+
+            return await products.Skip(skipResults).Take(pageSize).ToListAsync();
         }
 
         public async Task<Product?> UpdateProductAsync(int id, Product product)

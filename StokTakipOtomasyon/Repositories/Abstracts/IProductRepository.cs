@@ -5,7 +5,9 @@ namespace StokTakipOtomasyon.Repositories.Abstracts
 {
     public interface IProductRepository
     {
-        Task<List<Product>> GetProductsAsync();
+        Task<List<Product>> GetAllAsync(string? filterOn = null, string? filterQuery = null,
+                                        string? sortBy = null, bool isAscending = true, 
+                                        int pageNumber = 1, int pageSize = 5);
         Task<Product?> GetProductByIdAsync(int id);
         Task<Product?> AddProductAsync(AddProductRequestDto request);
         Task<Product?> UpdateProductAsync(int id, Product product);

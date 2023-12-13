@@ -38,11 +38,14 @@ namespace StokTakipOtomasyon.Controllers
             return Ok(product);
         }
 
+        // GET PRODUCTS 
+        // GET: /api/products/filterOn=Name&filterQuery=Machine&sortBy=Price&isAscending=True&pageNumber=1&pageSize=5
         [HttpGet]
-        public async Task<IActionResult> GetAllProducts()
+        public async Task<IActionResult> GetAllProducts([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
+            [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber=1, [FromQuery] int pageSize=5)
         {
             // Get All Products From Database
-            var products = await _productRepository.GetProductsAsync();
+            var products = await _productRepository.GetAllAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageNumber, pageSize);
             // Map to DTOs
             return Ok(_mapper.Map<List<ProductDto>>(products));
         }
