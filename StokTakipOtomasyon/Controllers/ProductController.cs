@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -41,6 +42,7 @@ namespace StokTakipOtomasyon.Controllers
         // GET PRODUCTS 
         // GET: /api/products/filterOn=Name&filterQuery=Machine&sortBy=Price&isAscending=True&pageNumber=1&pageSize=5
         [HttpGet]
+        [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAllProducts([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber=1, [FromQuery] int pageSize=5)
         {
@@ -51,6 +53,7 @@ namespace StokTakipOtomasyon.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             // Get Domain Model from Database

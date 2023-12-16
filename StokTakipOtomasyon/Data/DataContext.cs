@@ -5,7 +5,7 @@ namespace StokTakipOtomasyon.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+        public DataContext(DbContextOptions<DataContext> dbContextOptions) : base(dbContextOptions)
         {
                 
         }
