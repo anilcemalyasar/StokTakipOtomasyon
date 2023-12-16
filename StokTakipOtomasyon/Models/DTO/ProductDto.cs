@@ -1,4 +1,6 @@
-﻿namespace StokTakipOtomasyon.Models.DTO
+﻿using System.Text.Json.Serialization;
+
+namespace StokTakipOtomasyon.Models.DTO
 {
     public class ProductDto
     {
@@ -7,7 +9,5 @@
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int StockAmount { get; set; }
-
-        public WareHouseDto WareHouse { get; set; }
     }
 }

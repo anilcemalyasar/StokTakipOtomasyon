@@ -2,13 +2,18 @@
 
 namespace StokTakipOtomasyon.Models.DTO
 {
-    public class CompanyDto
+    public class AddCompanyDto
     {
-        public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+
+        [Required]
         public string Country { get; set; }
+
+        [Required]
         public string City { get; set; }
+
+        [Required]
         public string CompanyCode { get; set; }
-        public List<WareHouseDto> WareHouses { get; set; }
     }
 }

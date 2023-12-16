@@ -27,6 +27,8 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("StokTakipAuthCon
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IWareHouseRepository, WareHouseRepository>();
 builder.Services.AddTransient<ITokenRepository, TokenRepository>();
+builder.Services.AddTransient<ICompanyRepository, CompanyRepository>();
+
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 builder.Services.AddIdentityCore<IdentityUser>()

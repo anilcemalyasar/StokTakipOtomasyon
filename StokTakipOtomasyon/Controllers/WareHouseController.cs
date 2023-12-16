@@ -29,8 +29,8 @@ namespace StokTakipOtomasyon.Controllers
             var wareHouses = await _wareHouseRepository.GetAllAsync();
 
             // Map Domain Models To DTOs 
-            // return Ok(_mapper.Map<List<WareHouseDto>>(wareHouses));
-            return Ok(wareHouses);
+            return Ok(_mapper.Map<List<WareHouseDto>>(wareHouses));
+            // return Ok(wareHouses);
         }
 
         [HttpGet]
