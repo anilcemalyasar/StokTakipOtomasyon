@@ -32,15 +32,27 @@ namespace StokTakipOtomasyon.Repositories.Concretes
 
         }
 
-        public Task<Company?> DeleteCompanyByIdAsync(int id)
+        public async Task<Company?> DeleteCompanyByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var companyDomainModel = await _dbContext.Companies
+                                            .Include(company => company.WareHouses)
+                                            .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (companyDomainModel is null)
+            {
+                return null;
+            }
+
+            _dbContext.Companies.Remove(companyDomainModel);
+            await _dbContext.SaveChangesAsync();
+            return companyDomainModel;
         }
 
         public async Task<List<Company>> GetAllAsync()
         {
             return await _dbContext.Companies
                 .Include(company => company.WareHouses)
+                .ThenInclude(warehouse => warehouse.Products)
                 .ToListAsync();
         }
 
@@ -48,12 +60,31 @@ namespace StokTakipOtomasyon.Repositories.Concretes
         {
             return await _dbContext.Companies
                 .Include(company => company.WareHouses)
+                .ThenInclude(warehouse => warehouse.Products)
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public Task<Company?> UpdateCompanyAsync(int id, Company company)
+        public async Task<Company?> UpdateCompanyAsync(int id, Company company)
         {
-            throw new NotImplementedException();
+            var companyDomainModel = await _dbContext.Companies
+                                            .Include(company => company.WareHouses)
+                                            .FirstOrDefaultAsync(c => c.Id == id);
+
+            // Check if exists
+            if (companyDomainModel is null)
+            {
+                return null;
+            }
+
+            // Update properties
+            companyDomainModel.Name = company.Name;
+            companyDomainModel.Country = company.Country;
+            companyDomainModel.City = company.City;
+            companyDomainModel.CompanyCode = company.CompanyCode;
+
+            await _dbContext.SaveChangesAsync();
+            return companyDomainModel;
+
         }
     }
 }

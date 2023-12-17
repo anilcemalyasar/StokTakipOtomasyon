@@ -31,9 +31,19 @@ namespace StokTakipOtomasyon.Controllers
             // Get All Companies From Database
             var companies = await companyRepository.GetAllAsync();
 
-            // Convert them to DTOs and return
-            return Ok(mapper.Map<List<CompanyDto>>(companies));
-            // return Ok(companies);
+            var companyDtos = new List<CompanyDto>();
+
+            // Convert them to DTOs
+            foreach (var company in companies)
+            {
+                var wareHouseDtos = mapper.Map<List<WareHouseDto>>(company.WareHouses);
+                var companyDto = mapper.Map<CompanyDto>(company);
+                companyDto.WareHouses = wareHouseDtos;
+                companyDtos.Add(companyDto);
+            }
+
+            // Return DTO
+            return Ok(companyDtos);
         }
 
         [HttpGet]
@@ -49,7 +59,7 @@ namespace StokTakipOtomasyon.Controllers
                 return NotFound("Sorry, company couldn't be found!");
             }
 
-            return Ok(company);
+            return Ok(mapper.Map<CompanyDto>(company));
         }
 
         
@@ -77,7 +87,7 @@ namespace StokTakipOtomasyon.Controllers
 
         // PUT : /api/Company/id={}&wareHouseId={}
         [HttpPut]
-        [Route("{id:int}")]
+        [Route("Update/{id:int}")]
         public async Task<IActionResult> AssignWarehouseToCompany([FromRoute] int id, [FromQuery] int wareHouseId)
         {
             var wareHouseDomain = await wareHouseRepository.GetByIdAsync(wareHouseId);
@@ -96,6 +106,44 @@ namespace StokTakipOtomasyon.Controllers
 
             companyDomainModel = await companyRepository.AssignWareHouseToCompany(companyDomainModel, wareHouseDomain);
             return Ok(mapper.Map<CompanyDto>(companyDomainModel));
+        }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public async Task<IActionResult> UpdateCompany([FromRoute] int id, [FromBody] UpdateCompanyRequestDto updateCompanyRequestDto)
+        {
+            // Map DTO to Domain Model
+            var companyDomainModel = mapper.Map<Company>(updateCompanyRequestDto);
+
+            // Update Domain Model in Database
+            companyDomainModel = await companyRepository.UpdateCompanyAsync(id, companyDomainModel);
+
+            // Check if exists
+            if (companyDomainModel is null)
+            {
+                return NotFound("Sorry, Company with given ID not found!");
+            }
+
+            // Map Domain Model Back To Dto
+            return Ok(mapper.Map<CompanyDto>(companyDomainModel));
+
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task<IActionResult> DeleteCompany([FromRoute] int id)
+        {
+            var companyDomainModel = await companyRepository.GetByIdAsync(id);
+
+            // Check if exists
+            if (companyDomainModel is null)
+            {
+                return NotFound("Sorry, Company with given ID not found!");
+            }
+
+            companyDomainModel = await companyRepository.DeleteCompanyByIdAsync(id);
+            return Ok(mapper.Map<CompanyDto>(companyDomainModel));
+
         }
 
 

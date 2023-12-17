@@ -12,12 +12,23 @@ namespace StokTakipOtomasyon.Repositories.Concretes
         {
             _dbContext = dbContext;
         }
-        public async Task<WareHouse?> CreateAsync(WareHouse wareHouse)
+
+        public async Task<WareHouse?> CreateAsync(WareHouse wareHouse, int companyId)
         {
+            // Check if company with given Id exists
             var company = await _dbContext.Companies
-                .Include(c => c.WareHouses)
-                .FirstOrDefaultAsync(c => c.Id == wareHouse.Company.Id);
-            company.WareHouses.Add(wareHouse);
+                            .Include(c => c.WareHouses)
+                            .FirstOrDefaultAsync(c => c.Id == companyId);
+
+            if (company is null)
+            {
+                return null;
+            }
+
+            // assign company to warehouse
+            wareHouse.Company = company;
+
+            // Add new created warehouse into database
             await _dbContext.WareHouses.AddAsync(wareHouse);
             await _dbContext.SaveChangesAsync();
             return wareHouse;
@@ -25,7 +36,19 @@ namespace StokTakipOtomasyon.Repositories.Concretes
 
         public async Task<WareHouse?> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var wareHouse = await _dbContext.WareHouses
+                                .Include(wareHouse => wareHouse.Company)
+                                .Include(wareHouse => wareHouse.Products)
+                                .FirstOrDefaultAsync(w => w.Id == id);
+
+            if (wareHouse == null)
+            {
+                return null;
+            }
+
+            _dbContext.WareHouses.Remove(wareHouse);
+            await _dbContext.SaveChangesAsync();
+            return wareHouse;
         }
 
         public async Task<List<WareHouse>> GetAllAsync()

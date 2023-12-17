@@ -15,6 +15,8 @@ namespace StokTakipOtomasyon.Mappings
             CreateMap<Company, CompanyDto>().ReverseMap();
             CreateMap<UpdateWareHouseRequestDto, WareHouse>().ReverseMap();
             CreateMap<Company, AddCompanyDto>().ReverseMap();
+            CreateMap<Company, UpdateCompanyRequestDto>().ReverseMap();
+            CreateMap<WareHouse, AddWareHouseRequestDto>().ReverseMap();
         }
     }
 }

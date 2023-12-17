@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StokTakipOtomasyon.Models.Domain;
@@ -22,6 +23,8 @@ namespace StokTakipOtomasyon.Controllers
             _mapper = mapper;
         }
 
+
+        // GET ALL: /api/WareHouse
         [HttpGet]
         public async Task<IActionResult> GetAllWareHouses()
         {
@@ -33,8 +36,11 @@ namespace StokTakipOtomasyon.Controllers
             // return Ok(wareHouses);
         }
 
+
+        // GET By Id: /api/WareHouse/{id}
         [HttpGet]
         [Route("{id=int}")]
+        [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             // Find domain model with given ID
@@ -47,10 +53,30 @@ namespace StokTakipOtomasyon.Controllers
             }
 
             // Map Domain Model To DTO and Return
-            return Ok(_mapper.Map<WareHouse>(wareHouse));
+            return Ok(_mapper.Map<WareHouseDto>(wareHouse));
 
         }
 
+        // POST: /api/WareHouse
+        [HttpPost]
+        public async Task<IActionResult> CreateWarehouse([FromBody] AddWareHouseRequestDto addWareHouseRequestDto)
+        {
+            // Map DTO to Domain Model
+            var warehouseDomain = _mapper.Map<WareHouse>(addWareHouseRequestDto);
+
+            warehouseDomain = await _wareHouseRepository.CreateAsync(warehouseDomain, addWareHouseRequestDto.CompanyId);
+
+            if (warehouseDomain is null)
+            {
+                return NotFound("Sorry, the company with given ID not found!");
+            }
+
+            return Ok(_mapper.Map<WareHouseDto>(warehouseDomain));
+        }
+
+
+
+        // PUT: /api/WareHouse/{id}
         [HttpPut]
         [Route("{id=int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateWareHouseRequestDto updateWareHouseRequestDto)
@@ -70,7 +96,23 @@ namespace StokTakipOtomasyon.Controllers
             return Ok(_mapper.Map<WareHouseDto>(warehouseDomainModel));
 
         }
-        
+
+
+        // DELETE: /api/WareHouse/{id}
+        [HttpDelete]
+        [Route("{id=int}")]
+        public async Task<IActionResult> DeleteWarehouse([FromRoute] int id)
+        {
+            var wareHouse = await _wareHouseRepository.DeleteAsync(id);
+
+            if (wareHouse is null)
+            {
+                return NotFound("Sorry, the warehouse with given ID not found!");
+            }
+
+            // Map Domain Model To DTO
+            return Ok(_mapper.Map<WareHouseDto>(wareHouse));
+        }
 
     }
 }
