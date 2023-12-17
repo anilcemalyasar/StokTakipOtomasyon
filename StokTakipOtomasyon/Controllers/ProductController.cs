@@ -85,6 +85,23 @@ namespace StokTakipOtomasyon.Controllers
             return Ok(_mapper.Map<ProductDto>(productDomainModel));
         }
 
+        // Update Stock
+        // PATCH: /api/Product/{id}?quantity=1
+        [HttpPatch]
+        [Route("{id:int}")]
+        public async Task<IActionResult> UpdateStock([FromRoute] int id, [FromQuery] int quantity)
+        {
+            // Find domain model with given ID
+            var productDomainModel = await _productRepository.UpdateStockAsync(id, quantity);
+
+            if (productDomainModel is null)
+            {
+                return NotFound("There is no product with given ID");
+            }
+
+            // Map Domain Model To DTO
+            return Ok(_mapper.Map<ProductDto>(productDomainModel));
+        }
 
     }
 }

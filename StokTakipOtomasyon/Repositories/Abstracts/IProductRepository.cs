@@ -12,6 +12,7 @@ namespace StokTakipOtomasyon.Repositories.Abstracts
         Task<Product?> AddProductAsync(AddProductRequestDto request);
         Task<Product?> UpdateProductAsync(int id, Product product);
         Task<Product?> DeleteProductByIdAsync(int id);
+        Task<Product?> UpdateStockAsync(int id, int quantity);
 
     }
 }

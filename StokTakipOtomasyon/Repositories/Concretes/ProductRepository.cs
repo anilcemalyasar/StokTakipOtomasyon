@@ -109,5 +109,22 @@ namespace StokTakipOtomasyon.Repositories.Concretes
             return existingProduct;
 
         }
+
+        public async Task<Product?> UpdateStockAsync(int id, int quantity)
+        {
+            var existingProduct = await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+
+            if (existingProduct is null)
+            {
+                return null;
+            }
+
+            // Update Stock Amount
+            existingProduct.StockAmount += quantity;
+
+            // Save all changes asynchronous
+            await _dbContext.SaveChangesAsync();
+            return existingProduct;
+        }
     }
 }
