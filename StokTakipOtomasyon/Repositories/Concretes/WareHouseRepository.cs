@@ -51,12 +51,28 @@ namespace StokTakipOtomasyon.Repositories.Concretes
             return wareHouse;
         }
 
-        public async Task<List<WareHouse>> GetAllAsync()
+        public async Task<List<WareHouse>> GetAllAsync(string? filterOn, string? filterQuery)
         {
-            return await _dbContext.WareHouses
-                .Include("Products")
-                .Include("Company")
-                .ToListAsync();
+            // Get IQueryable for Filtering
+            var wareHouses = _dbContext.WareHouses
+                             .Include(w => w.Products)
+                             .Include(w => w.Company)
+                             .AsQueryable();
+
+            // Filtering
+            if (String.IsNullOrWhiteSpace(filterOn) == false && String.IsNullOrWhiteSpace(filterQuery) == false)
+            {
+                if (filterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    wareHouses = wareHouses.Where(w => w.Name.Contains(filterQuery));
+                }
+                if (filterOn.Equals("Region", StringComparison.OrdinalIgnoreCase))
+                {
+                    wareHouses = wareHouses.Where(w => w.Region.Equals(filterQuery));
+                }
+            }
+
+            return await wareHouses.ToListAsync();
         }
 
         public async Task<WareHouse?> GetByIdAsync(int id)
