@@ -24,12 +24,13 @@ namespace StokTakipOtomasyon.Controllers
         }
 
 
-        // GET ALL: /api/WareHouse/filterOn=Name&filterQuery=Fabrik
+        // GET ALL: /api/WareHouse/filterOn=Name&filterQuery=Fabrik&sortBy=Name&isAscending=true&pageNumber=1&pageSize=3
         [HttpGet]
-        public async Task<IActionResult> GetAllWareHouses([FromQuery] string? filterOn, [FromQuery] string? filterQuery)
+        public async Task<IActionResult> GetAllWareHouses([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
+            [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber=1, [FromQuery] int pageSize=3)
         {
             // Get All WareHouses From Database
-            var wareHouses = await _wareHouseRepository.GetAllAsync(filterOn, filterQuery);
+            var wareHouses = await _wareHouseRepository.GetAllAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageNumber, pageSize);
 
             // Map Domain Models To DTOs 
             return Ok(_mapper.Map<List<WareHouseDto>>(wareHouses));

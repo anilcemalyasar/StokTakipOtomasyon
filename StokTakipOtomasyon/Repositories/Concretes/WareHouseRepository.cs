@@ -51,7 +51,8 @@ namespace StokTakipOtomasyon.Repositories.Concretes
             return wareHouse;
         }
 
-        public async Task<List<WareHouse>> GetAllAsync(string? filterOn, string? filterQuery)
+        public async Task<List<WareHouse>> GetAllAsync(string? filterOn = null, string? filterQuery = null
+                      ,string? sortBy = null, bool isAscending = true, int pageNumber = 1, int pageSize = 3)
         {
             // Get IQueryable for Filtering
             var wareHouses = _dbContext.WareHouses
@@ -72,7 +73,19 @@ namespace StokTakipOtomasyon.Repositories.Concretes
                 }
             }
 
-            return await wareHouses.ToListAsync();
+            // Sorting
+            if (String.IsNullOrWhiteSpace(sortBy) == false)
+            {
+                if (sortBy.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    wareHouses = isAscending ? wareHouses.OrderBy(w => w.Name) : wareHouses.OrderByDescending(w => w.Name);
+                }
+            }
+
+            // Pagination
+            int skipResults = (pageNumber -1) * pageSize;
+
+            return await wareHouses.Skip(skipResults).Take(pageSize).ToListAsync();
         }
 
         public async Task<WareHouse?> GetByIdAsync(int id)
