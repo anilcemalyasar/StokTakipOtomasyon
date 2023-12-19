@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using StokTakipOtomasyon.Models.Domain;
 using StokTakipOtomasyon.Models.DTO;
 using StokTakipOtomasyon.Repositories.Abstracts;
+using System.Text.Json;
 
 namespace StokTakipOtomasyon.Controllers
 {
@@ -14,13 +15,17 @@ namespace StokTakipOtomasyon.Controllers
     {
         private readonly IWareHouseRepository _wareHouseRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger<WareHouseController> _logger;
 
         public WareHouseController(
             IWareHouseRepository wareHouseRepository,
-            IMapper mapper)
+            IMapper mapper,
+            ILogger<WareHouseController> logger)
         {
             _wareHouseRepository = wareHouseRepository;
             _mapper = mapper;
+            _logger = logger;
+
         }
 
 
@@ -30,12 +35,18 @@ namespace StokTakipOtomasyon.Controllers
         public async Task<IActionResult> GetAllWareHouses([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber=1, [FromQuery] int pageSize=3)
         {
+            // Logging
+            _logger.LogInformation("GetAllWareHouses Action Method was invoked!");
+
             // Get All WareHouses From Database
             var wareHouses = await _wareHouseRepository.GetAllAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageNumber, pageSize);
 
-            // Map Domain Models To DTOs 
+            // Serialize domain models and log to console
+            _logger.LogInformation($"Finished GetAllWareHouses Action Method with the data: {JsonSerializer.Serialize(wareHouses)}");
+
+            // Map Domain Models To DTOs
             return Ok(_mapper.Map<List<WareHouseDto>>(wareHouses));
-            // return Ok(wareHouses);
+            
         }
 
 
@@ -45,6 +56,9 @@ namespace StokTakipOtomasyon.Controllers
         [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
+            // Log that informs method was invoked
+            _logger.LogInformation("GetById Action Method was invoked!");
+
             // Find domain model with given ID
             var wareHouse = await _wareHouseRepository.GetByIdAsync(id);
             
@@ -53,6 +67,9 @@ namespace StokTakipOtomasyon.Controllers
             {
                 return NotFound();
             }
+
+            // Serialize domain model with given Id and log to console
+            _logger.LogInformation($"Finished GetById action method with the data: {JsonSerializer.Serialize(wareHouse)}");
 
             // Map Domain Model To DTO and Return
             return Ok(_mapper.Map<WareHouseDto>(wareHouse));

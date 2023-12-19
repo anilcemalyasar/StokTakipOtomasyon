@@ -7,6 +7,7 @@ using StokTakipOtomasyon.Data;
 using StokTakipOtomasyon.Models.Domain;
 using StokTakipOtomasyon.Models.DTO;
 using StokTakipOtomasyon.Repositories.Abstracts;
+using System.Text.Json;
 
 namespace StokTakipOtomasyon.Controllers
 {
@@ -17,15 +18,17 @@ namespace StokTakipOtomasyon.Controllers
         private readonly IProductRepository _productRepository;
         private readonly DataContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly ILogger<ProductController> _logger;
 
         public ProductController(IProductRepository productRepository, 
             DataContext dbContext,
-            IMapper mapper
-            )
+            IMapper mapper,
+            ILogger<ProductController> logger)
         {
             _productRepository = productRepository;
             _dbContext = dbContext;
             _mapper = mapper;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -46,9 +49,14 @@ namespace StokTakipOtomasyon.Controllers
         public async Task<IActionResult> GetAllProducts([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber=1, [FromQuery] int pageSize=5)
         {
+            _logger.LogInformation("GetAll Action Method was invoked");
+
             // Get All Products From Database
             var products = await _productRepository.GetAllAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageNumber, pageSize);
+
             // Map to DTOs
+            _logger.LogInformation($"Finished GetAllProducts request with the data: {JsonSerializer.Serialize(products)}");
+
             return Ok(_mapper.Map<List<ProductDto>>(products));
         }
 
@@ -56,14 +64,22 @@ namespace StokTakipOtomasyon.Controllers
         [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
+
+            // Logging that informs about method invoked
+            _logger.LogInformation("GetById Action Method was invoked!");
+
             // Get Domain Model from Database
             var product = await _productRepository.GetProductByIdAsync(id);
+
             if (product == null)
             {
                 return NotFound("There is no product with given ID");
             }
 
             // Map Domain Model To DTO
+
+            _logger.LogInformation($"Finished GetById request with the data: {JsonSerializer.Serialize(product)}");
+
             return Ok(_mapper.Map<ProductDto>(product));
         }
 
