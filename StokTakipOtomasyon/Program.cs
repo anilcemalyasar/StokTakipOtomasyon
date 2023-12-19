@@ -9,6 +9,7 @@ using StokTakipOtomasyon.Repositories.Concretes;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using StokTakipOtomasyon.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -108,6 +109,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 

@@ -49,3 +49,52 @@ INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
 2023-12-19 14:59:21.363 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 372.1515ms
 2023-12-19 14:59:21.365 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
 2023-12-19 14:59:21.366 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=5 - - - 200 - application/json;+charset=utf-8 423.5534ms
+2023-12-19 15:42:28.895 +03:00 [INF] User profile is available. Using 'C:\Users\msi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-12-19 15:42:29.059 +03:00 [INF] Now listening on: https://localhost:7233
+2023-12-19 15:42:29.061 +03:00 [INF] Now listening on: http://localhost:5117
+2023-12-19 15:42:29.063 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-12-19 15:42:29.064 +03:00 [INF] Hosting environment: Development
+2023-12-19 15:42:29.065 +03:00 [INF] Content root path: D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon
+2023-12-19 15:42:31.072 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/index.html - -
+2023-12-19 15:42:31.283 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - -
+2023-12-19 15:42:31.283 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/index.html - - - 200 - text/html;charset=utf-8 212.2368ms
+2023-12-19 15:42:31.292 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - - - 200 12006 application/javascript;+charset=utf-8 9.0771ms
+2023-12-19 15:42:31.319 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_vs/browserLink - -
+2023-12-19 15:42:31.393 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 73.8531ms
+2023-12-19 15:42:31.442 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - -
+2023-12-19 15:42:31.573 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 131.0899ms
+2023-12-19 15:42:40.459 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product/123123123 - -
+2023-12-19 15:42:40.526 +03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Reader)
+2023-12-19 15:42:40.529 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-12-19 15:42:40.530 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product/123123123 - - - 401 0 - 70.7671ms
+2023-12-19 15:43:06.407 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Auth/Login application/json 68
+2023-12-19 15:43:06.418 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.AuthController.Login (StokTakipOtomasyon)'
+2023-12-19 15:43:06.438 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StokTakipOtomasyon.Models.DTO.LoginRequestDto) on controller StokTakipOtomasyon.Controllers.AuthController (StokTakipOtomasyon).
+2023-12-19 15:43:07.604 +03:00 [INF] Executed DbCommand (46ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2023-12-19 15:43:07.800 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2023-12-19 15:43:07.837 +03:00 [INF] Executing OkObjectResult, writing value of type 'StokTakipOtomasyon.Models.DTO.LoginResponseDto'.
+2023-12-19 15:43:07.844 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.AuthController.Login (StokTakipOtomasyon) in 1400.086ms
+2023-12-19 15:43:07.846 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.AuthController.Login (StokTakipOtomasyon)'
+2023-12-19 15:43:07.853 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Auth/Login application/json 68 - 200 - application/json;+charset=utf-8 1445.8249ms
+2023-12-19 15:43:23.573 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product/123123123 - -
+2023-12-19 15:43:23.614 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetById (StokTakipOtomasyon)'
+2023-12-19 15:43:23.621 +03:00 [INF] Route matched with {action = "GetById", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-19 15:43:23.713 +03:00 [INF] GetById Action Method was invoked!
+2023-12-19 15:43:23.782 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-12-19 15:43:23.889 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM [Products] AS [p]
+INNER JOIN [WareHouses] AS [w] ON [p].[WareHouseId] = [w].[Id]
+WHERE [p].[Id] = @__id_0
+2023-12-19 15:43:23.892 +03:00 [INF] Executing NotFoundObjectResult, writing value of type 'System.String'.
+2023-12-19 15:43:23.894 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetById (StokTakipOtomasyon) in 271.7152ms
+2023-12-19 15:43:23.895 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetById (StokTakipOtomasyon)'
+2023-12-19 15:43:23.897 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product/123123123 - - - 404 - text/plain;+charset=utf-8 323.9078ms
