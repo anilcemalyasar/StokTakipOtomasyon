@@ -1,48 +1,43 @@
-﻿using System.Net;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Text.Json;
 
 namespace StokTakipOtomasyon.Middlewares
 {
-    public class ExceptionHandlerMiddleware
+    public class ExceptionHandlerMiddleware : IMiddleware
     {
         private readonly ILogger<ExceptionHandlerMiddleware> _logger;
-        private readonly RequestDelegate _next;
-
-        public ExceptionHandlerMiddleware(RequestDelegate next, ILogger<ExceptionHandlerMiddleware> logger)
+        public ExceptionHandlerMiddleware(ILogger<ExceptionHandlerMiddleware> logger)
         {
-            _next = next;
             _logger = logger;
         }
 
-
-        public async Task Invoke(HttpContext httpContext)
+        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             try
             {
-                await _next(httpContext);
-
+                await next(context);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                var errorId = Guid.NewGuid();
-
                 // Log this exception
-                _logger.LogError(ex, $"{errorId} : {ex.Message}");
+                _logger.LogError(e, e.Message);
 
-                // Return a custom error response
+                // Return a generalized custom error response
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-                httpContext.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
-                httpContext.Response.ContentType = "application/json";
-
-                var error = new
+                ProblemDetails problemDetails = new ProblemDetails
                 {
-                    Id = errorId,
-                    ErrorMessage = "Something went wrong"
+                    Type = "Server error",
+                    Title = "Server error",
+                    Detail = "An internal server has occurred"
                 };
 
-                await httpContext.Response.WriteAsJsonAsync(error);
+                string json = JsonSerializer.Serialize(problemDetails);
+                context.Response.ContentType = "application/json";
 
+                await context.Response.WriteAsync(json);
             }
         }
-
     }
 }

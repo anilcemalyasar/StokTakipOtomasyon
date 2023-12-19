@@ -70,7 +70,7 @@ namespace StokTakipOtomasyon.Controllers
 
             // Get Domain Model from Database
             var product = await _productRepository.GetProductByIdAsync(id);
-
+            
             if (product == null)
             {
                 return NotFound("There is no product with given ID");
