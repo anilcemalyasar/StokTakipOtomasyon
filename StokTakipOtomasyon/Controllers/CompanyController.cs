@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StokTakipOtomasyon.Exceptions;
 using StokTakipOtomasyon.Models.Domain;
 using StokTakipOtomasyon.Models.DTO;
 using StokTakipOtomasyon.Repositories.Abstracts;
 using StokTakipOtomasyon.Repositories.Concretes;
+using System.Text.Json;
 
 namespace StokTakipOtomasyon.Controllers
 {
@@ -15,19 +17,24 @@ namespace StokTakipOtomasyon.Controllers
         private readonly ICompanyRepository companyRepository;
         private readonly IWareHouseRepository wareHouseRepository;
         private readonly IMapper mapper;
+        private readonly ILogger<CompanyController> logger;
 
         public CompanyController(ICompanyRepository companyRepository, 
-            IMapper mapper, IWareHouseRepository wareHouseRepository)
+            IMapper mapper, IWareHouseRepository wareHouseRepository, ILogger<CompanyController> logger)
         {
             this.companyRepository = companyRepository;
             this.mapper = mapper;
             this.wareHouseRepository = wareHouseRepository;
+            this.logger = logger;
         }
 
         // GET ALL : /api/Company/
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            // Loging that method invoked
+            logger.LogInformation("GetAll Companies Action Method was invoked!");
+
             // Get All Companies From Database
             var companies = await companyRepository.GetAllAsync();
 
@@ -41,6 +48,9 @@ namespace StokTakipOtomasyon.Controllers
                 companyDto.WareHouses = wareHouseDtos;
                 companyDtos.Add(companyDto);
             }
+
+            // Log domain models into console
+            logger.LogInformation($"Finished GetAll Request with the data: {JsonSerializer.Serialize(companies)}");
 
             // Return DTO
             return Ok(companyDtos);
@@ -56,9 +66,10 @@ namespace StokTakipOtomasyon.Controllers
             // Check if exists
             if (company is null)
             {
-                return NotFound("Sorry, company couldn't be found!");
+                throw new CompanyNotFoundException("Sorry, company couldn't be found!");
             }
 
+            logger.LogInformation($"Finished GetById request with the data: {JsonSerializer.Serialize(company)}");
             return Ok(mapper.Map<CompanyDto>(company));
         }
 
@@ -112,6 +123,10 @@ namespace StokTakipOtomasyon.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> UpdateCompany([FromRoute] int id, [FromBody] UpdateCompanyRequestDto updateCompanyRequestDto)
         {
+
+            // Log that method invoked
+            logger.LogInformation("UpdateById Action Method was invoked!");
+
             // Map DTO to Domain Model
             var companyDomainModel = mapper.Map<Company>(updateCompanyRequestDto);
 
@@ -121,10 +136,11 @@ namespace StokTakipOtomasyon.Controllers
             // Check if exists
             if (companyDomainModel is null)
             {
-                return NotFound("Sorry, Company with given ID not found!");
+                throw new CompanyNotFoundException("Sorry, Company with given ID not found!");
             }
 
             // Map Domain Model Back To Dto
+            logger.LogInformation($"Finished UpdateById request with the data: {JsonSerializer.Serialize(companyDomainModel)}");
             return Ok(mapper.Map<CompanyDto>(companyDomainModel));
 
         }
@@ -138,10 +154,16 @@ namespace StokTakipOtomasyon.Controllers
             // Check if exists
             if (companyDomainModel is null)
             {
-                return NotFound("Sorry, Company with given ID not found!");
+                throw new CompanyNotFoundException("Sorry, Company with given ID not found!");
             }
 
+            // Remove domain model from the database
             companyDomainModel = await companyRepository.DeleteCompanyByIdAsync(id);
+
+            // Logging removed domain model in console
+            logger.LogInformation($"Finished DeleteCompany request with the data: {JsonSerializer.Serialize(companyDomainModel)}");
+
+            // Map Domain Model to DTO
             return Ok(mapper.Map<CompanyDto>(companyDomainModel));
 
         }

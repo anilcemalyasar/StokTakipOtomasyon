@@ -96,9 +96,12 @@ namespace StokTakipOtomasyon.Controllers
 
             if (productDomainModel == null)
             {
-                return NotFound();
+                throw new ProductNotFoundException("There is no product with given ID");
             }
 
+            _logger.LogInformation($"Finished UpdateProduct request with the data: {JsonSerializer.Serialize(productDomainModel)}");
+
+            // Map updated domain model back to DTO
             return Ok(_mapper.Map<ProductDto>(productDomainModel));
         }
 
@@ -113,10 +116,11 @@ namespace StokTakipOtomasyon.Controllers
 
             if (productDomainModel is null)
             {
-                return NotFound("There is no product with given ID");
+                throw new ProductNotFoundException("There is no product with given ID");
             }
 
             // Map Domain Model To DTO
+            _logger.LogInformation($"Finished UpdateStock request with the data: {JsonSerializer.Serialize(productDomainModel)}");
             return Ok(_mapper.Map<ProductDto>(productDomainModel));
         }
 
