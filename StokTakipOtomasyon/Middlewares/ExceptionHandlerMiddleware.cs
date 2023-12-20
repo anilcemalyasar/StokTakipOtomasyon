@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using StokTakipOtomasyon.Exceptions;
+using StokTakipOtomasyon.Models.Domain;
 using System.Net;
 using System.Text.Json;
 
@@ -7,9 +9,11 @@ namespace StokTakipOtomasyon.Middlewares
     public class ExceptionHandlerMiddleware : IMiddleware
     {
         private readonly ILogger<ExceptionHandlerMiddleware> _logger;
+        // private readonly RequestDelegate _next;
         public ExceptionHandlerMiddleware(ILogger<ExceptionHandlerMiddleware> logger)
         {
             _logger = logger;
+            // _next = next;
         }
 
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
@@ -18,25 +22,26 @@ namespace StokTakipOtomasyon.Middlewares
             {
                 await next(context);
             }
-            catch (Exception e)
+            catch (Exception error)
             {
                 // Log this exception
-                _logger.LogError(e, e.Message);
+                _logger.LogError(error, error.Message);
 
-                // Return a generalized custom error response
-                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
-                ProblemDetails problemDetails = new ProblemDetails
+                var response = context.Response;
+                response.ContentType = "application/json";
+                var responseModel = ApiResponse<string>.Fail(error.Message);
+                switch (error)
                 {
-                    Type = "Server error",
-                    Title = "Server error",
-                    Detail = "An internal server has occurred"
-                };
+                    case ProductNotFoundException 
+                        or CompanyNotFoundException:
+                        // custom application error
+                        response.StatusCode = (int)HttpStatusCode.NotFound;
+                        break;
+                }
 
-                string json = JsonSerializer.Serialize(problemDetails);
-                context.Response.ContentType = "application/json";
+                var result = JsonSerializer.Serialize(responseModel);
+                await response.WriteAsync(result);
 
-                await context.Response.WriteAsync(json);
             }
         }
     }

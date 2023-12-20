@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StokTakipOtomasyon.Data;
+using StokTakipOtomasyon.Exceptions;
 using StokTakipOtomasyon.Models.Domain;
 using StokTakipOtomasyon.Models.DTO;
 using StokTakipOtomasyon.Repositories.Abstracts;
@@ -45,7 +46,7 @@ namespace StokTakipOtomasyon.Controllers
         // GET PRODUCTS 
         // GET: /api/products/filterOn=Name&filterQuery=Machine&sortBy=Price&isAscending=True&pageNumber=1&pageSize=5
         [HttpGet]
-        [Authorize(Roles = "Reader")]
+        // [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAllProducts([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber=1, [FromQuery] int pageSize=5)
         {
@@ -73,7 +74,7 @@ namespace StokTakipOtomasyon.Controllers
             
             if (product == null)
             {
-                return NotFound("There is no product with given ID");
+                throw new ProductNotFoundException("Product with given ID not found!");
             }
 
             // Map Domain Model To DTO
