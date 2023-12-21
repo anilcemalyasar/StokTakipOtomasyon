@@ -41,9 +41,20 @@ namespace StokTakipOtomasyon.Repositories.Concretes
             return product;
         }
 
-        public Task<Product?> DeleteProductByIdAsync(int id)
+        public async Task<Product?> DeleteProductByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var existingProduct = await _dbContext.Products
+                                    .Include(p => p.WareHouse)
+                                    .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (existingProduct is null)
+            {
+                return null;
+            }
+
+            _dbContext.Products.Remove(existingProduct);
+            await _dbContext.SaveChangesAsync();
+            return existingProduct;
         }
 
         public async Task<Product?> GetProductByIdAsync(int id)

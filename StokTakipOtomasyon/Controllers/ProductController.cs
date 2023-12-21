@@ -124,5 +124,26 @@ namespace StokTakipOtomasyon.Controllers
             return Ok(_mapper.Map<ProductDto>(productDomainModel));
         }
 
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
+        {
+            // Logging
+            _logger.LogInformation("DeleteProduct Action Method was invoked!");
+
+            // Find the domain model with given id
+            var product = await _productRepository.DeleteProductByIdAsync(id);
+
+            if (product is null)
+            {
+                throw new ProductNotFoundException("There is not any product with given Id!");
+            }
+
+            _logger.LogInformation($"Finished DeleteProduct request with the data: {JsonSerializer.Serialize(product)}");
+
+            // Map Domain Model to DTO
+            return Ok(_mapper.Map<ProductDto>(product));
+        }
+
     }
 }

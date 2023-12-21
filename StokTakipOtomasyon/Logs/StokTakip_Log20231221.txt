@@ -1,0 +1,1179 @@
+2023-12-21 08:39:17.629 +03:00 [INF] User profile is available. Using 'C:\Users\msi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-12-21 08:39:17.912 +03:00 [INF] Now listening on: https://localhost:7233
+2023-12-21 08:39:17.914 +03:00 [INF] Now listening on: http://localhost:5117
+2023-12-21 08:39:17.917 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-12-21 08:39:17.918 +03:00 [INF] Hosting environment: Development
+2023-12-21 08:39:17.919 +03:00 [INF] Content root path: D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon
+2023-12-21 08:39:20.680 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/index.html - -
+2023-12-21 08:39:23.798 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - -
+2023-12-21 08:39:23.800 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/index.html - - - 200 - text/html;charset=utf-8 3121.3316ms
+2023-12-21 08:39:23.809 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - - - 200 12006 application/javascript;+charset=utf-8 10.8250ms
+2023-12-21 08:39:23.835 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_vs/browserLink - -
+2023-12-21 08:39:24.342 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 506.8947ms
+2023-12-21 08:39:24.391 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - -
+2023-12-21 08:39:24.540 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 149.8574ms
+2023-12-21 08:51:02.747 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7233/api/Product - -
+2023-12-21 08:51:02.751 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:51:02.752 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7233/api/Product - - - 204 - - 5.6062ms
+2023-12-21 08:51:02.754 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Product application/json 71
+2023-12-21 08:51:02.756 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:51:03.890 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:51:03.914 +03:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(StokTakipOtomasyon.Models.DTO.AddProductRequestDto) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:51:04.872 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-12-21 08:51:05.897 +03:00 [INF] Executed DbCommand (49ms) [Parameters=[@__request_WarehouseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [t].[City0], [t].[CompanyCode], [t].[Country0], [t].[Name0]
+FROM (
+    SELECT TOP(1) [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [c].[Id] AS [Id0], [c].[City] AS [City0], [c].[CompanyCode], [c].[Country] AS [Country0], [c].[Name] AS [Name0]
+    FROM [WareHouses] AS [w]
+    INNER JOIN [Companies] AS [c] ON [w].[CompanyId] = [c].[Id]
+    WHERE [w].[Id] = @__request_WarehouseId_0
+) AS [t]
+LEFT JOIN [Products] AS [p] ON [t].[Id] = [p].[WareHouseId]
+ORDER BY [t].[Id], [t].[Id0]
+2023-12-21 08:51:05.933 +03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-12-21 08:51:05.946 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon) in 2026.5665ms
+2023-12-21 08:51:05.948 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:51:05.955 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Product application/json 71 - 404 - application/problem+json;+charset=utf-8 3201.1521ms
+2023-12-21 08:51:18.716 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7233/api/Product - -
+2023-12-21 08:51:18.719 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:51:18.720 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7233/api/Product - - - 204 - - 3.9203ms
+2023-12-21 08:51:18.723 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Product application/json 71
+2023-12-21 08:51:18.723 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:51:18.725 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:51:18.726 +03:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(StokTakipOtomasyon.Models.DTO.AddProductRequestDto) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:51:18.743 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_WarehouseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [t].[City0], [t].[CompanyCode], [t].[Country0], [t].[Name0]
+FROM (
+    SELECT TOP(1) [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [c].[Id] AS [Id0], [c].[City] AS [City0], [c].[CompanyCode], [c].[Country] AS [Country0], [c].[Name] AS [Name0]
+    FROM [WareHouses] AS [w]
+    INNER JOIN [Companies] AS [c] ON [w].[CompanyId] = [c].[Id]
+    WHERE [w].[Id] = @__request_WarehouseId_0
+) AS [t]
+LEFT JOIN [Products] AS [p] ON [t].[Id] = [p].[WareHouseId]
+ORDER BY [t].[Id], [t].[Id0]
+2023-12-21 08:51:18.746 +03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-12-21 08:51:18.747 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon) in 19.6485ms
+2023-12-21 08:51:18.748 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:51:18.750 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Product application/json 71 - 404 - application/problem+json;+charset=utf-8 27.2914ms
+2023-12-21 08:51:56.209 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Product application/json 104
+2023-12-21 08:51:56.217 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:51:56.221 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:51:56.221 +03:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(StokTakipOtomasyon.Models.DTO.AddProductRequestDto) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:51:56.281 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@__request_WarehouseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [t].[City0], [t].[CompanyCode], [t].[Country0], [t].[Name0]
+FROM (
+    SELECT TOP(1) [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [c].[Id] AS [Id0], [c].[City] AS [City0], [c].[CompanyCode], [c].[Country] AS [Country0], [c].[Name] AS [Name0]
+    FROM [WareHouses] AS [w]
+    INNER JOIN [Companies] AS [c] ON [w].[CompanyId] = [c].[Id]
+    WHERE [w].[Id] = @__request_WarehouseId_0
+) AS [t]
+LEFT JOIN [Products] AS [p] ON [t].[Id] = [p].[WareHouseId]
+ORDER BY [t].[Id], [t].[Id0]
+2023-12-21 08:51:56.285 +03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-12-21 08:51:56.287 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon) in 63.8645ms
+2023-12-21 08:51:56.288 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:51:56.289 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Product application/json 104 - 404 - application/problem+json;+charset=utf-8 80.3683ms
+2023-12-21 08:52:28.376 +03:00 [INF] User profile is available. Using 'C:\Users\msi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-12-21 08:52:28.530 +03:00 [INF] Now listening on: https://localhost:7233
+2023-12-21 08:52:28.531 +03:00 [INF] Now listening on: http://localhost:5117
+2023-12-21 08:52:28.533 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-12-21 08:52:28.534 +03:00 [INF] Hosting environment: Development
+2023-12-21 08:52:28.534 +03:00 [INF] Content root path: D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon
+2023-12-21 08:52:29.121 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/index.html - -
+2023-12-21 08:52:29.309 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/index.html - - - 200 - text/html;charset=utf-8 189.1765ms
+2023-12-21 08:52:29.342 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_vs/browserLink - -
+2023-12-21 08:52:29.342 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - -
+2023-12-21 08:52:29.355 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - - - 200 12006 application/javascript;+charset=utf-8 12.8747ms
+2023-12-21 08:52:29.379 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 36.2652ms
+2023-12-21 08:52:29.435 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - -
+2023-12-21 08:52:29.550 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 115.0419ms
+2023-12-21 08:52:45.054 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Product application/json 105
+2023-12-21 08:52:45.061 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:52:45.123 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:52:45.143 +03:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(StokTakipOtomasyon.Models.DTO.AddProductRequestDto) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:52:45.732 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-12-21 08:52:46.568 +03:00 [INF] Executed DbCommand (52ms) [Parameters=[@__request_WarehouseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [t].[City0], [t].[CompanyCode], [t].[Country0], [t].[Name0]
+FROM (
+    SELECT TOP(1) [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [c].[Id] AS [Id0], [c].[City] AS [City0], [c].[CompanyCode], [c].[Country] AS [Country0], [c].[Name] AS [Name0]
+    FROM [WareHouses] AS [w]
+    INNER JOIN [Companies] AS [c] ON [w].[CompanyId] = [c].[Id]
+    WHERE [w].[Id] = @__request_WarehouseId_0
+) AS [t]
+LEFT JOIN [Products] AS [p] ON [t].[Id] = [p].[WareHouseId]
+ORDER BY [t].[Id], [t].[Id0]
+2023-12-21 08:52:46.779 +03:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Description], [Name], [Price], [StockAmount], [WareHouseId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-12-21 08:52:46.805 +03:00 [INF] Executing OkObjectResult, writing value of type 'StokTakipOtomasyon.Models.Domain.Product'.
+2023-12-21 08:52:46.816 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon) in 1666.7664ms
+2023-12-21 08:52:46.819 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:52:46.827 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Product application/json 105 - 200 - application/json;+charset=utf-8 1773.3708ms
+2023-12-21 08:55:14.179 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7233/api/Product - -
+2023-12-21 08:55:14.181 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:55:14.182 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7233/api/Product - - - 204 - - 2.9894ms
+2023-12-21 08:55:14.184 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Product application/json 71
+2023-12-21 08:55:14.185 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:55:14.187 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:55:14.188 +03:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(StokTakipOtomasyon.Models.DTO.AddProductRequestDto) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:55:14.245 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_WarehouseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [t].[City0], [t].[CompanyCode], [t].[Country0], [t].[Name0]
+FROM (
+    SELECT TOP(1) [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [c].[Id] AS [Id0], [c].[City] AS [City0], [c].[CompanyCode], [c].[Country] AS [Country0], [c].[Name] AS [Name0]
+    FROM [WareHouses] AS [w]
+    INNER JOIN [Companies] AS [c] ON [w].[CompanyId] = [c].[Id]
+    WHERE [w].[Id] = @__request_WarehouseId_0
+) AS [t]
+LEFT JOIN [Products] AS [p] ON [t].[Id] = [p].[WareHouseId]
+ORDER BY [t].[Id], [t].[Id0]
+2023-12-21 08:55:14.248 +03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-12-21 08:55:14.250 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon) in 60.8666ms
+2023-12-21 08:55:14.251 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:55:14.253 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Product application/json 71 - 404 - application/problem+json;+charset=utf-8 68.3157ms
+2023-12-21 08:55:29.346 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7233/api/Product - -
+2023-12-21 08:55:29.348 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:55:29.351 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7233/api/Product - - - 204 - - 4.6451ms
+2023-12-21 08:55:29.354 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Product application/json 71
+2023-12-21 08:55:29.355 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:55:29.358 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:55:29.360 +03:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(StokTakipOtomasyon.Models.DTO.AddProductRequestDto) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:55:29.405 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_WarehouseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [t].[City0], [t].[CompanyCode], [t].[Country0], [t].[Name0]
+FROM (
+    SELECT TOP(1) [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [c].[Id] AS [Id0], [c].[City] AS [City0], [c].[CompanyCode], [c].[Country] AS [Country0], [c].[Name] AS [Name0]
+    FROM [WareHouses] AS [w]
+    INNER JOIN [Companies] AS [c] ON [w].[CompanyId] = [c].[Id]
+    WHERE [w].[Id] = @__request_WarehouseId_0
+) AS [t]
+LEFT JOIN [Products] AS [p] ON [t].[Id] = [p].[WareHouseId]
+ORDER BY [t].[Id], [t].[Id0]
+2023-12-21 08:55:29.407 +03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-12-21 08:55:29.408 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon) in 46.6661ms
+2023-12-21 08:55:29.410 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:55:29.411 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Product application/json 71 - 404 - application/problem+json;+charset=utf-8 57.0279ms
+2023-12-21 08:55:51.923 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7233/api/Product - -
+2023-12-21 08:55:51.930 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:55:51.932 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7233/api/Product - - - 204 - - 8.5604ms
+2023-12-21 08:55:51.935 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Product application/json 71
+2023-12-21 08:55:51.936 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:55:51.937 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:55:51.938 +03:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(StokTakipOtomasyon.Models.DTO.AddProductRequestDto) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:55:51.942 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_WarehouseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [t].[City0], [t].[CompanyCode], [t].[Country0], [t].[Name0]
+FROM (
+    SELECT TOP(1) [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [c].[Id] AS [Id0], [c].[City] AS [City0], [c].[CompanyCode], [c].[Country] AS [Country0], [c].[Name] AS [Name0]
+    FROM [WareHouses] AS [w]
+    INNER JOIN [Companies] AS [c] ON [w].[CompanyId] = [c].[Id]
+    WHERE [w].[Id] = @__request_WarehouseId_0
+) AS [t]
+LEFT JOIN [Products] AS [p] ON [t].[Id] = [p].[WareHouseId]
+ORDER BY [t].[Id], [t].[Id0]
+2023-12-21 08:55:51.944 +03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-12-21 08:55:51.945 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon) in 5.4017ms
+2023-12-21 08:55:51.946 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:55:51.947 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Product application/json 71 - 404 - application/problem+json;+charset=utf-8 12.3655ms
+2023-12-21 08:57:09.719 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7233/api/Product - -
+2023-12-21 08:57:09.755 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:57:09.757 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7233/api/Product - - - 204 - - 37.3794ms
+2023-12-21 08:57:09.759 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Product application/json 93
+2023-12-21 08:57:09.759 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:57:09.760 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:57:09.761 +03:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(StokTakipOtomasyon.Models.DTO.AddProductRequestDto) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:57:09.771 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__request_WarehouseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [t].[City0], [t].[CompanyCode], [t].[Country0], [t].[Name0]
+FROM (
+    SELECT TOP(1) [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [c].[Id] AS [Id0], [c].[City] AS [City0], [c].[CompanyCode], [c].[Country] AS [Country0], [c].[Name] AS [Name0]
+    FROM [WareHouses] AS [w]
+    INNER JOIN [Companies] AS [c] ON [w].[CompanyId] = [c].[Id]
+    WHERE [w].[Id] = @__request_WarehouseId_0
+) AS [t]
+LEFT JOIN [Products] AS [p] ON [t].[Id] = [p].[WareHouseId]
+ORDER BY [t].[Id], [t].[Id0]
+2023-12-21 08:57:09.777 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Description], [Name], [Price], [StockAmount], [WareHouseId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-12-21 08:57:09.780 +03:00 [INF] Executing OkObjectResult, writing value of type 'StokTakipOtomasyon.Models.Domain.Product'.
+2023-12-21 08:57:09.780 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon) in 18.3688ms
+2023-12-21 08:57:09.782 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 08:57:09.783 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Product application/json 93 - 200 - application/json;+charset=utf-8 24.4253ms
+2023-12-21 08:59:16.439 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=5 - -
+2023-12-21 08:59:16.442 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:59:16.443 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 08:59:16.448 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:59:16.455 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 08:59:16.464 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-12-21 08:59:16.465 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-12-21 08:59:16.478 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 08:59:16.482 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12}]
+2023-12-21 08:59:16.492 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 08:59:16.495 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 45.3211ms
+2023-12-21 08:59:16.496 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 08:59:16.497 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=5 - - - 200 - application/json;+charset=utf-8 57.9916ms
+2023-12-21 08:59:17.346 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=5 - -
+2023-12-21 08:59:17.347 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:59:17.348 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 08:59:17.348 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:59:17.350 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 08:59:17.352 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 08:59:17.355 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12}]
+2023-12-21 08:59:17.357 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 08:59:17.358 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 8.689ms
+2023-12-21 08:59:17.359 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 08:59:17.360 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=5 - - - 200 - application/json;+charset=utf-8 14.0137ms
+2023-12-21 08:59:32.739 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 08:59:32.740 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:59:32.742 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 08:59:32.744 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:59:32.747 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 08:59:32.759 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 08:59:32.762 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 08:59:32.765 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 08:59:32.767 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 20.8852ms
+2023-12-21 08:59:32.768 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 08:59:32.769 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 30.7020ms
+2023-12-21 08:59:39.730 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 08:59:39.732 +03:00 [INF] CORS policy execution successful.
+2023-12-21 08:59:39.732 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 08:59:39.733 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 08:59:39.735 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 08:59:39.737 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-12-21 08:59:39.738 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-12-21 08:59:39.744 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 08:59:39.747 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5},{"Id":15,"Name":"Pressure Relief Valve","Description":"Valve for controlling and releasing excess pressure","Price":120.00,"StockAmount":12},{"Id":16,"Name":"deneme","Description":"deneme","Price":10.00,"StockAmount":10},{"Id":17,"Name":"Deneme","Description":"Deneme \u00DCr\u00FCn\u00FC","Price":50.00,"StockAmount":10}]
+2023-12-21 08:59:39.748 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 08:59:39.749 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 14.8826ms
+2023-12-21 08:59:39.750 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 08:59:39.753 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 22.5079ms
+2023-12-21 09:05:04.833 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/index.html - -
+2023-12-21 09:05:04.853 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/index.html - - - 200 - text/html;charset=utf-8 20.1312ms
+2023-12-21 09:05:04.864 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_vs/browserLink - -
+2023-12-21 09:05:04.864 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - -
+2023-12-21 09:05:04.870 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - - - 200 12006 application/javascript;+charset=utf-8 5.5815ms
+2023-12-21 09:05:04.892 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 27.8363ms
+2023-12-21 09:05:05.068 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - -
+2023-12-21 09:05:05.085 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 16.7550ms
+2023-12-21 09:05:13.760 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7233/api/Product/16 - -
+2023-12-21 09:05:13.769 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:05:13.770 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:05:13.773 +03:00 [INF] Route matched with {action = "DeleteProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProduct(Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:05:13.776 +03:00 [INF] DeleteProduct Action Method was invoked!
+2023-12-21 09:05:13.835 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon) in 61.0454ms
+2023-12-21 09:05:13.837 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:05:13.854 +03:00 [ERR] The method or operation is not implemented.
+System.NotImplementedException: The method or operation is not implemented.
+   at StokTakipOtomasyon.Repositories.Concretes.ProductRepository.DeleteProductByIdAsync(Int32 id)
+   at StokTakipOtomasyon.Controllers.ProductController.DeleteProduct(Int32 id)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StokTakipOtomasyon.Middlewares.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next)
+2023-12-21 09:05:13.876 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7233/api/Product/16 - - - 200 - application/json 116.3522ms
+2023-12-21 09:07:36.120 +03:00 [INF] User profile is available. Using 'C:\Users\msi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-12-21 09:07:36.288 +03:00 [INF] Now listening on: https://localhost:7233
+2023-12-21 09:07:36.290 +03:00 [INF] Now listening on: http://localhost:5117
+2023-12-21 09:07:36.292 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-12-21 09:07:36.292 +03:00 [INF] Hosting environment: Development
+2023-12-21 09:07:36.293 +03:00 [INF] Content root path: D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon
+2023-12-21 09:07:36.790 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/index.html - -
+2023-12-21 09:07:36.986 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/index.html - - - 200 - text/html;charset=utf-8 196.6184ms
+2023-12-21 09:07:36.988 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - -
+2023-12-21 09:07:36.996 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - - - 200 12006 application/javascript;+charset=utf-8 7.9406ms
+2023-12-21 09:07:37.019 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_vs/browserLink - -
+2023-12-21 09:07:37.061 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 41.3332ms
+2023-12-21 09:07:37.208 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - -
+2023-12-21 09:07:37.345 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 136.8236ms
+2023-12-21 09:07:44.179 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7233/api/Product/16 - -
+2023-12-21 09:07:44.184 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:07:44.239 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:07:44.259 +03:00 [INF] Route matched with {action = "DeleteProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProduct(Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:07:44.476 +03:00 [INF] DeleteProduct Action Method was invoked!
+2023-12-21 09:07:44.814 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-12-21 09:07:45.448 +03:00 [INF] Executed DbCommand (43ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM [Products] AS [p]
+INNER JOIN [WareHouses] AS [w] ON [p].[WareHouseId] = [w].[Id]
+WHERE [p].[Id] = @__id_0
+2023-12-21 09:07:45.606 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Products]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-12-21 09:07:45.625 +03:00 [INF] Finished DeleteProduct request with the data: {"Result":{"Id":16,"Name":"deneme","Description":"deneme","Price":10.00,"StockAmount":10},"Id":458,"Exception":null,"Status":5,"IsCanceled":false,"IsCompleted":true,"IsCompletedSuccessfully":true,"CreationOptions":0,"AsyncState":null,"IsFaulted":false}
+2023-12-21 09:07:45.684 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon) in 1420.458ms
+2023-12-21 09:07:45.686 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:07:45.703 +03:00 [ERR] Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AsyncStateMachineBox`1 -> ProductDto
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[StokTakipOtomasyon.Models.Domain.Product, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[StokTakipOtomasyon.Repositories.Concretes.ProductRepository+<DeleteProductByIdAsync>d__3, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> StokTakipOtomasyon.Models.DTO.ProductDto
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AsyncStateMachineBox`1 -> ProductDto
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[StokTakipOtomasyon.Models.Domain.Product, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[StokTakipOtomasyon.Repositories.Concretes.ProductRepository+<DeleteProductByIdAsync>d__3, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> StokTakipOtomasyon.Models.DTO.ProductDto
+   at lambda_method135(Closure, Object, ProductDto, ResolutionContext)
+   at StokTakipOtomasyon.Controllers.ProductController.DeleteProduct(Int32 id) in D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon\Controllers\ProductController.cs:line 145
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StokTakipOtomasyon.Middlewares.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon\Middlewares\ExceptionHandlerMiddleware.cs:line 23
+2023-12-21 09:07:45.738 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7233/api/Product/16 - - - 200 - application/json 1559.1093ms
+2023-12-21 09:10:49.523 +03:00 [INF] User profile is available. Using 'C:\Users\msi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-12-21 09:10:49.687 +03:00 [INF] Now listening on: https://localhost:7233
+2023-12-21 09:10:49.688 +03:00 [INF] Now listening on: http://localhost:5117
+2023-12-21 09:10:49.690 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-12-21 09:10:49.690 +03:00 [INF] Hosting environment: Development
+2023-12-21 09:10:49.691 +03:00 [INF] Content root path: D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon
+2023-12-21 09:10:50.181 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/index.html - -
+2023-12-21 09:10:50.379 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/index.html - - - 200 - text/html;charset=utf-8 197.8912ms
+2023-12-21 09:10:50.379 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - -
+2023-12-21 09:10:50.387 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - - - 200 12006 application/javascript;+charset=utf-8 7.8406ms
+2023-12-21 09:10:50.411 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_vs/browserLink - -
+2023-12-21 09:10:50.444 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 33.4461ms
+2023-12-21 09:10:50.538 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - -
+2023-12-21 09:10:50.703 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 165.5404ms
+2023-12-21 09:10:58.486 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7233/api/Product/17 - -
+2023-12-21 09:10:58.491 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:10:58.543 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:10:58.562 +03:00 [INF] Route matched with {action = "DeleteProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProduct(Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:10:58.790 +03:00 [INF] DeleteProduct Action Method was invoked!
+2023-12-21 09:10:59.150 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-12-21 09:10:59.754 +03:00 [INF] Executed DbCommand (42ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM [Products] AS [p]
+INNER JOIN [WareHouses] AS [w] ON [p].[WareHouseId] = [w].[Id]
+WHERE [p].[Id] = @__id_0
+2023-12-21 09:10:59.904 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Products]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-12-21 09:10:59.925 +03:00 [INF] Finished DeleteProduct request with the data: {"Result":{"Id":17,"Name":"Deneme","Description":"Deneme \u00DCr\u00FCn\u00FC","Price":50.00,"StockAmount":10},"Id":456,"Exception":null,"Status":5,"IsCanceled":false,"IsCompleted":true,"IsCompletedSuccessfully":true,"CreationOptions":0,"AsyncState":null,"IsFaulted":false}
+2023-12-21 09:10:59.986 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon) in 1417.4843ms
+2023-12-21 09:10:59.989 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:11:00.008 +03:00 [ERR] Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AsyncStateMachineBox`1 -> ProductDto
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[StokTakipOtomasyon.Models.Domain.Product, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[StokTakipOtomasyon.Repositories.Concretes.ProductRepository+<DeleteProductByIdAsync>d__3, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> StokTakipOtomasyon.Models.DTO.ProductDto
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AsyncStateMachineBox`1 -> ProductDto
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[StokTakipOtomasyon.Models.Domain.Product, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[StokTakipOtomasyon.Repositories.Concretes.ProductRepository+<DeleteProductByIdAsync>d__3, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> StokTakipOtomasyon.Models.DTO.ProductDto
+   at lambda_method135(Closure, Object, ProductDto, ResolutionContext)
+   at StokTakipOtomasyon.Controllers.ProductController.DeleteProduct(Int32 id) in D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon\Controllers\ProductController.cs:line 145
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StokTakipOtomasyon.Middlewares.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon\Middlewares\ExceptionHandlerMiddleware.cs:line 23
+2023-12-21 09:11:00.054 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7233/api/Product/17 - - - 200 - application/json 1567.4128ms
+2023-12-21 09:11:16.863 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=5 - -
+2023-12-21 09:11:16.867 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:11:16.873 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:11:16.881 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:11:16.898 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-12-21 09:11:16.901 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-12-21 09:11:16.920 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:11:16.925 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12}]
+2023-12-21 09:11:16.937 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:11:16.941 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 66.0224ms
+2023-12-21 09:11:16.943 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:11:16.945 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=5 - - - 200 - application/json;+charset=utf-8 82.4667ms
+2023-12-21 09:11:25.885 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7233/api/Product/16 - -
+2023-12-21 09:11:25.886 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:11:25.889 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:11:25.891 +03:00 [INF] Route matched with {action = "DeleteProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProduct(Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:11:25.895 +03:00 [INF] DeleteProduct Action Method was invoked!
+2023-12-21 09:11:25.939 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM [Products] AS [p]
+INNER JOIN [WareHouses] AS [w] ON [p].[WareHouseId] = [w].[Id]
+WHERE [p].[Id] = @__id_0
+2023-12-21 09:11:25.941 +03:00 [INF] Finished DeleteProduct request with the data: {"Result":null,"Id":536,"Exception":null,"Status":5,"IsCanceled":false,"IsCompleted":true,"IsCompletedSuccessfully":true,"CreationOptions":0,"AsyncState":null,"IsFaulted":false}
+2023-12-21 09:11:25.967 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon) in 74.5285ms
+2023-12-21 09:11:25.969 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:11:25.984 +03:00 [ERR] Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AsyncStateMachineBox`1 -> ProductDto
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[StokTakipOtomasyon.Models.Domain.Product, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[StokTakipOtomasyon.Repositories.Concretes.ProductRepository+<DeleteProductByIdAsync>d__3, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> StokTakipOtomasyon.Models.DTO.ProductDto
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AsyncStateMachineBox`1 -> ProductDto
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[StokTakipOtomasyon.Models.Domain.Product, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[StokTakipOtomasyon.Repositories.Concretes.ProductRepository+<DeleteProductByIdAsync>d__3, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> StokTakipOtomasyon.Models.DTO.ProductDto
+   at lambda_method135(Closure, Object, ProductDto, ResolutionContext)
+   at StokTakipOtomasyon.Controllers.ProductController.DeleteProduct(Int32 id) in D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon\Controllers\ProductController.cs:line 145
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StokTakipOtomasyon.Middlewares.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon\Middlewares\ExceptionHandlerMiddleware.cs:line 23
+2023-12-21 09:11:25.991 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7233/api/Product/16 - - - 200 - application/json 106.3471ms
+2023-12-21 09:11:28.778 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7233/api/Product/15 - -
+2023-12-21 09:11:28.779 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:11:28.780 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:11:28.781 +03:00 [INF] Route matched with {action = "DeleteProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProduct(Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:11:28.783 +03:00 [INF] DeleteProduct Action Method was invoked!
+2023-12-21 09:11:28.793 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM [Products] AS [p]
+INNER JOIN [WareHouses] AS [w] ON [p].[WareHouseId] = [w].[Id]
+WHERE [p].[Id] = @__id_0
+2023-12-21 09:11:28.802 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Products]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-12-21 09:11:28.804 +03:00 [INF] Finished DeleteProduct request with the data: {"Result":{"Id":15,"Name":"Pressure Relief Valve","Description":"Valve for controlling and releasing excess pressure","Price":120.00,"StockAmount":12},"Id":558,"Exception":null,"Status":5,"IsCanceled":false,"IsCompleted":true,"IsCompletedSuccessfully":true,"CreationOptions":0,"AsyncState":null,"IsFaulted":false}
+2023-12-21 09:11:28.830 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon) in 47.0065ms
+2023-12-21 09:11:28.831 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:11:28.848 +03:00 [ERR] Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AsyncStateMachineBox`1 -> ProductDto
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[StokTakipOtomasyon.Models.Domain.Product, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[StokTakipOtomasyon.Repositories.Concretes.ProductRepository+<DeleteProductByIdAsync>d__3, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> StokTakipOtomasyon.Models.DTO.ProductDto
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AsyncStateMachineBox`1 -> ProductDto
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[StokTakipOtomasyon.Models.Domain.Product, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[StokTakipOtomasyon.Repositories.Concretes.ProductRepository+<DeleteProductByIdAsync>d__3, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> StokTakipOtomasyon.Models.DTO.ProductDto
+   at lambda_method135(Closure, Object, ProductDto, ResolutionContext)
+   at StokTakipOtomasyon.Controllers.ProductController.DeleteProduct(Int32 id) in D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon\Controllers\ProductController.cs:line 145
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StokTakipOtomasyon.Middlewares.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\StopTakipOtomasyon\StokTakip\StokTakipOtomasyon\Middlewares\ExceptionHandlerMiddleware.cs:line 23
+2023-12-21 09:11:28.856 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7233/api/Product/15 - - - 200 - application/json 77.8918ms
+2023-12-21 09:11:44.806 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/index.html - -
+2023-12-21 09:11:44.820 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/index.html - - - 200 - text/html;charset=utf-8 13.7607ms
+2023-12-21 09:11:44.835 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_vs/browserLink - -
+2023-12-21 09:11:44.835 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - -
+2023-12-21 09:11:44.841 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_framework/aspnetcore-browser-refresh.js - - - 200 12006 application/javascript;+charset=utf-8 5.8380ms
+2023-12-21 09:11:44.866 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 31.1786ms
+2023-12-21 09:11:44.927 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - -
+2023-12-21 09:11:44.942 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 15.1073ms
+2023-12-21 09:11:53.113 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7233/api/Product/16 - -
+2023-12-21 09:11:53.114 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:11:53.115 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:11:53.118 +03:00 [INF] Route matched with {action = "DeleteProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProduct(Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:11:53.122 +03:00 [INF] DeleteProduct Action Method was invoked!
+2023-12-21 09:11:53.131 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM [Products] AS [p]
+INNER JOIN [WareHouses] AS [w] ON [p].[WareHouseId] = [w].[Id]
+WHERE [p].[Id] = @__id_0
+2023-12-21 09:11:53.272 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon) in 150.8702ms
+2023-12-21 09:11:53.274 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:11:53.331 +03:00 [ERR] There is not any product with given Id!
+StokTakipOtomasyon.Exceptions.ProductNotFoundException: There is not any product with given Id!
+   at StokTakipOtomasyon.Controllers.ProductController.DeleteProduct(Int32 id)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StokTakipOtomasyon.Middlewares.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next)
+2023-12-21 09:11:53.338 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7233/api/Product/16 - - - 404 - application/json 224.7665ms
+2023-12-21 09:12:16.207 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:12:16.209 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:12:16.209 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:12:16.213 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:12:16.215 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:12:16.217 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-12-21 09:12:16.217 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-12-21 09:12:16.224 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:12:16.227 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5}]
+2023-12-21 09:12:16.229 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:12:16.231 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 16.9761ms
+2023-12-21 09:12:16.232 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:12:16.233 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 25.9347ms
+2023-12-21 09:12:40.383 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7233/api/Product - -
+2023-12-21 09:12:40.387 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:12:40.388 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7233/api/Product - - - 204 - - 4.9369ms
+2023-12-21 09:12:40.390 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Product application/json 83
+2023-12-21 09:12:40.390 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:12:40.391 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 09:12:40.394 +03:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(StokTakipOtomasyon.Models.DTO.AddProductRequestDto) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:12:40.444 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_WarehouseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [t].[City0], [t].[CompanyCode], [t].[Country0], [t].[Name0]
+FROM (
+    SELECT TOP(1) [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [c].[Id] AS [Id0], [c].[City] AS [City0], [c].[CompanyCode], [c].[Country] AS [Country0], [c].[Name] AS [Name0]
+    FROM [WareHouses] AS [w]
+    INNER JOIN [Companies] AS [c] ON [w].[CompanyId] = [c].[Id]
+    WHERE [w].[Id] = @__request_WarehouseId_0
+) AS [t]
+LEFT JOIN [Products] AS [p] ON [t].[Id] = [p].[WareHouseId]
+ORDER BY [t].[Id], [t].[Id0]
+2023-12-21 09:12:40.487 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Description], [Name], [Price], [StockAmount], [WareHouseId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-12-21 09:12:40.498 +03:00 [INF] Executing OkObjectResult, writing value of type 'StokTakipOtomasyon.Models.Domain.Product'.
+2023-12-21 09:12:40.500 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon) in 104.8746ms
+2023-12-21 09:12:40.502 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 09:12:40.502 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Product application/json 83 - 200 - application/json;+charset=utf-8 112.6947ms
+2023-12-21 09:12:41.857 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:12:41.858 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:12:41.859 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:12:41.860 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:12:41.862 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:12:41.866 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:12:41.868 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5},{"Id":18,"Name":"deneme","Description":"deneme","Price":50.00,"StockAmount":1}]
+2023-12-21 09:12:41.869 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:12:41.870 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 8.6407ms
+2023-12-21 09:12:41.871 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:12:41.872 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 15.3353ms
+2023-12-21 09:12:55.101 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7233/api/Product/18 - -
+2023-12-21 09:12:55.102 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:12:55.103 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:12:55.104 +03:00 [INF] Route matched with {action = "DeleteProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProduct(Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:12:55.106 +03:00 [INF] DeleteProduct Action Method was invoked!
+2023-12-21 09:12:55.111 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM [Products] AS [p]
+INNER JOIN [WareHouses] AS [w] ON [p].[WareHouseId] = [w].[Id]
+WHERE [p].[Id] = @__id_0
+2023-12-21 09:12:55.116 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Products]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-12-21 09:12:55.118 +03:00 [INF] Finished DeleteProduct request with the data: {"Id":18,"Name":"deneme","Description":"deneme","Price":50.00,"StockAmount":1}
+2023-12-21 09:12:55.121 +03:00 [INF] Executing OkObjectResult, writing value of type 'StokTakipOtomasyon.Models.DTO.ProductDto'.
+2023-12-21 09:12:55.122 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon) in 15.6335ms
+2023-12-21 09:12:55.123 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:12:55.124 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7233/api/Product/18 - - - 200 - application/json;+charset=utf-8 22.6536ms
+2023-12-21 09:13:13.192 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7233/api/Product - -
+2023-12-21 09:13:13.193 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:13:13.194 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7233/api/Product - - - 204 - - 1.9134ms
+2023-12-21 09:13:13.196 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7233/api/Product application/json 84
+2023-12-21 09:13:13.197 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:13:13.197 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 09:13:13.198 +03:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(StokTakipOtomasyon.Models.DTO.AddProductRequestDto) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:13:13.203 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_WarehouseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [t].[City0], [t].[CompanyCode], [t].[Country0], [t].[Name0]
+FROM (
+    SELECT TOP(1) [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [c].[Id] AS [Id0], [c].[City] AS [City0], [c].[CompanyCode], [c].[Country] AS [Country0], [c].[Name] AS [Name0]
+    FROM [WareHouses] AS [w]
+    INNER JOIN [Companies] AS [c] ON [w].[CompanyId] = [c].[Id]
+    WHERE [w].[Id] = @__request_WarehouseId_0
+) AS [t]
+LEFT JOIN [Products] AS [p] ON [t].[Id] = [p].[WareHouseId]
+ORDER BY [t].[Id], [t].[Id0]
+2023-12-21 09:13:13.208 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Description], [Name], [Price], [StockAmount], [WareHouseId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-12-21 09:13:13.210 +03:00 [INF] Executing OkObjectResult, writing value of type 'StokTakipOtomasyon.Models.Domain.Product'.
+2023-12-21 09:13:13.211 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon) in 11.2102ms
+2023-12-21 09:13:13.212 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.AddProduct (StokTakipOtomasyon)'
+2023-12-21 09:13:13.213 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7233/api/Product application/json 84 - 200 - application/json;+charset=utf-8 16.8408ms
+2023-12-21 09:13:14.825 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:13:14.826 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:13:14.827 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:13:14.828 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:13:14.831 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:13:14.833 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:13:14.835 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5},{"Id":19,"Name":"deneme","Description":"deneme","Price":100.00,"StockAmount":1}]
+2023-12-21 09:13:14.836 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:13:14.837 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 7.2718ms
+2023-12-21 09:13:14.838 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:13:14.839 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 14.4555ms
+2023-12-21 09:13:53.469 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:13:53.473 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:13:53.474 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:13:53.475 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:13:53.477 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:13:53.485 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:13:53.487 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5},{"Id":19,"Name":"deneme","Description":"deneme","Price":100.00,"StockAmount":1}]
+2023-12-21 09:13:53.489 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:13:53.490 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 13.481ms
+2023-12-21 09:13:53.491 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:13:53.492 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 23.2946ms
+2023-12-21 09:16:02.669 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:16:02.675 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:16:02.676 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:16:02.677 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:16:02.679 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:16:02.696 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:16:02.698 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5},{"Id":19,"Name":"deneme","Description":"deneme","Price":100.00,"StockAmount":1}]
+2023-12-21 09:16:02.700 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:16:02.701 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 22.5831ms
+2023-12-21 09:16:02.702 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:16:02.704 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 34.7207ms
+2023-12-21 09:19:09.795 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:19:09.802 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:19:09.803 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:19:09.804 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:19:09.808 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:19:09.818 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:19:09.821 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5},{"Id":19,"Name":"deneme","Description":"deneme","Price":100.00,"StockAmount":1}]
+2023-12-21 09:19:09.822 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:19:09.822 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 15.2636ms
+2023-12-21 09:19:09.825 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:19:09.825 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 30.7147ms
+2023-12-21 09:19:51.446 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:19:51.450 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:19:51.451 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:19:51.452 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:19:51.454 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:19:51.461 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:19:51.463 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5},{"Id":19,"Name":"deneme","Description":"deneme","Price":100.00,"StockAmount":1}]
+2023-12-21 09:19:51.464 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:19:51.465 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 11.5786ms
+2023-12-21 09:19:51.466 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:19:51.467 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 20.8035ms
+2023-12-21 09:20:07.201 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:20:07.201 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:20:07.203 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:20:07.203 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:20:07.206 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:20:07.209 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:20:07.212 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5},{"Id":19,"Name":"deneme","Description":"deneme","Price":100.00,"StockAmount":1}]
+2023-12-21 09:20:07.213 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:20:07.214 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 8.2168ms
+2023-12-21 09:20:07.215 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:20:07.216 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 15.5024ms
+2023-12-21 09:20:51.669 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:20:51.673 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:20:51.674 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:20:51.674 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:20:51.676 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:20:51.684 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:20:51.686 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5},{"Id":19,"Name":"deneme","Description":"deneme","Price":100.00,"StockAmount":1}]
+2023-12-21 09:20:51.687 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:20:51.688 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 12.0589ms
+2023-12-21 09:20:51.689 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:20:51.690 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 21.1112ms
+2023-12-21 09:20:55.915 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7233/api/Product/19 - -
+2023-12-21 09:20:55.916 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:20:55.916 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7233/api/Product/19 - - - 204 - - 1.3369ms
+2023-12-21 09:20:55.918 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7233/api/Product/19 - -
+2023-12-21 09:20:55.918 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:20:55.919 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:20:55.920 +03:00 [INF] Route matched with {action = "DeleteProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProduct(Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:20:55.921 +03:00 [INF] DeleteProduct Action Method was invoked!
+2023-12-21 09:20:55.924 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM [Products] AS [p]
+INNER JOIN [WareHouses] AS [w] ON [p].[WareHouseId] = [w].[Id]
+WHERE [p].[Id] = @__id_0
+2023-12-21 09:20:55.929 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Products]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-12-21 09:20:55.930 +03:00 [INF] Finished DeleteProduct request with the data: {"Id":19,"Name":"deneme","Description":"deneme","Price":100.00,"StockAmount":1}
+2023-12-21 09:20:55.931 +03:00 [INF] Executing OkObjectResult, writing value of type 'StokTakipOtomasyon.Models.DTO.ProductDto'.
+2023-12-21 09:20:55.932 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon) in 11.0195ms
+2023-12-21 09:20:55.933 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.DeleteProduct (StokTakipOtomasyon)'
+2023-12-21 09:20:55.934 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7233/api/Product/19 - - - 200 - application/json;+charset=utf-8 15.9779ms
+2023-12-21 09:20:55.936 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:20:55.936 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:20:55.937 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:20:55.937 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:20:55.939 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:20:55.941 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:20:55.943 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5}]
+2023-12-21 09:20:55.944 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:20:55.945 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 6.1207ms
+2023-12-21 09:20:55.946 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:20:55.947 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 11.0053ms
+2023-12-21 09:21:11.918 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Company - -
+2023-12-21 09:21:11.919 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:21:11.920 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon)'
+2023-12-21 09:21:11.923 +03:00 [INF] Route matched with {action = "GetAll", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller StokTakipOtomasyon.Controllers.CompanyController (StokTakipOtomasyon).
+2023-12-21 09:21:11.926 +03:00 [INF] GetAll Companies Action Method was invoked!
+2023-12-21 09:21:11.938 +03:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2023-12-21 09:21:11.947 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[City], [c].[CompanyCode], [c].[Country], [c].[Name], [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [t].[Description], [t].[Name0], [t].[Price], [t].[StockAmount], [t].[WareHouseId]
+FROM [Companies] AS [c]
+LEFT JOIN (
+    SELECT [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [p].[Id] AS [Id0], [p].[Description], [p].[Name] AS [Name0], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [WareHouses] AS [w]
+    LEFT JOIN [Products] AS [p] ON [w].[Id] = [p].[WareHouseId]
+) AS [t] ON [c].[Id] = [t].[CompanyId]
+ORDER BY [c].[Id], [t].[Id]
+2023-12-21 09:21:11.959 +03:00 [INF] Finished GetAll Request with the data: [{"Id":1,"Name":"Bosch","Country":"Germany","City":"Dortmund","CompanyCode":"110"},{"Id":2,"Name":"Siemens AG","Country":"Germany","City":"M\u00FCnchen","CompanyCode":"1010"}]
+2023-12-21 09:21:11.960 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.CompanyDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:21:11.964 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon) in 39.8099ms
+2023-12-21 09:21:11.966 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon)'
+2023-12-21 09:21:11.967 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Company - - - 200 - application/json;+charset=utf-8 49.0571ms
+2023-12-21 09:21:13.195 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - -
+2023-12-21 09:21:13.195 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:21:13.196 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:21:13.197 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:21:13.199 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:21:13.201 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:21:13.204 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":14,"Name":"Automated Welding System","Description":"Robotic system for automated welding in manufacturing","Price":2200.00,"StockAmount":5}]
+2023-12-21 09:21:13.205 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:21:13.206 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 7.0862ms
+2023-12-21 09:21:13.207 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:21:13.208 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=2&pageSize=10 - - - 200 - application/json;+charset=utf-8 13.0930ms
+2023-12-21 09:21:20.779 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:21:20.780 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:21:20.781 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:21:20.783 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:21:20.786 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:21:20.797 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:21:20.799 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:21:20.802 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:21:20.803 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 17.2575ms
+2023-12-21 09:21:20.804 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:21:20.805 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 26.8635ms
+2023-12-21 09:22:16.662 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:22:16.668 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:16.669 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:16.670 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:22:16.671 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:22:16.680 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:22:16.683 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:22:16.686 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:16.686 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 15.3408ms
+2023-12-21 09:22:16.688 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:16.689 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 26.4877ms
+2023-12-21 09:22:24.305 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:22:24.306 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:24.307 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:24.307 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:22:24.309 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:22:24.311 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:22:24.314 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:22:24.317 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:24.318 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 9.4664ms
+2023-12-21 09:22:24.319 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:24.320 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 15.3008ms
+2023-12-21 09:22:34.266 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:22:34.269 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:34.271 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:34.273 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:22:34.277 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:22:34.287 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:22:34.290 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:22:34.293 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:34.294 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 18.2837ms
+2023-12-21 09:22:34.295 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:22:34.296 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:34.300 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:34.301 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 34.3304ms
+2023-12-21 09:22:34.301 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:34.302 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:22:34.304 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:22:34.306 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:22:34.309 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:22:34.312 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:34.313 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 8.6457ms
+2023-12-21 09:22:34.314 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:34.314 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 19.1913ms
+2023-12-21 09:22:42.172 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Company - -
+2023-12-21 09:22:42.173 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:42.174 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon)'
+2023-12-21 09:22:42.174 +03:00 [INF] Route matched with {action = "GetAll", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller StokTakipOtomasyon.Controllers.CompanyController (StokTakipOtomasyon).
+2023-12-21 09:22:42.176 +03:00 [INF] GetAll Companies Action Method was invoked!
+2023-12-21 09:22:42.183 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[City], [c].[CompanyCode], [c].[Country], [c].[Name], [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [t].[Description], [t].[Name0], [t].[Price], [t].[StockAmount], [t].[WareHouseId]
+FROM [Companies] AS [c]
+LEFT JOIN (
+    SELECT [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [p].[Id] AS [Id0], [p].[Description], [p].[Name] AS [Name0], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [WareHouses] AS [w]
+    LEFT JOIN [Products] AS [p] ON [w].[Id] = [p].[WareHouseId]
+) AS [t] ON [c].[Id] = [t].[CompanyId]
+ORDER BY [c].[Id], [t].[Id]
+2023-12-21 09:22:42.186 +03:00 [INF] Finished GetAll Request with the data: [{"Id":1,"Name":"Bosch","Country":"Germany","City":"Dortmund","CompanyCode":"110"},{"Id":2,"Name":"Siemens AG","Country":"Germany","City":"M\u00FCnchen","CompanyCode":"1010"}]
+2023-12-21 09:22:42.187 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.CompanyDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:42.188 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon) in 12.0175ms
+2023-12-21 09:22:42.189 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon)'
+2023-12-21 09:22:42.190 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Company - - - 200 - application/json;+charset=utf-8 17.8281ms
+2023-12-21 09:22:43.016 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:22:43.018 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:43.019 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:43.020 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:22:43.021 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:22:43.024 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:22:43.027 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:22:43.030 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:43.031 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 9.8714ms
+2023-12-21 09:22:43.032 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:43.033 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 16.5597ms
+2023-12-21 09:22:46.532 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Company - -
+2023-12-21 09:22:46.533 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:46.534 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon)'
+2023-12-21 09:22:46.535 +03:00 [INF] Route matched with {action = "GetAll", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller StokTakipOtomasyon.Controllers.CompanyController (StokTakipOtomasyon).
+2023-12-21 09:22:46.537 +03:00 [INF] GetAll Companies Action Method was invoked!
+2023-12-21 09:22:46.540 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[City], [c].[CompanyCode], [c].[Country], [c].[Name], [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [t].[Description], [t].[Name0], [t].[Price], [t].[StockAmount], [t].[WareHouseId]
+FROM [Companies] AS [c]
+LEFT JOIN (
+    SELECT [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [p].[Id] AS [Id0], [p].[Description], [p].[Name] AS [Name0], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [WareHouses] AS [w]
+    LEFT JOIN [Products] AS [p] ON [w].[Id] = [p].[WareHouseId]
+) AS [t] ON [c].[Id] = [t].[CompanyId]
+ORDER BY [c].[Id], [t].[Id]
+2023-12-21 09:22:46.543 +03:00 [INF] Finished GetAll Request with the data: [{"Id":1,"Name":"Bosch","Country":"Germany","City":"Dortmund","CompanyCode":"110"},{"Id":2,"Name":"Siemens AG","Country":"Germany","City":"M\u00FCnchen","CompanyCode":"1010"}]
+2023-12-21 09:22:46.544 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.CompanyDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:46.545 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon) in 8.407ms
+2023-12-21 09:22:46.546 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon)'
+2023-12-21 09:22:46.547 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Company - - - 200 - application/json;+charset=utf-8 14.6566ms
+2023-12-21 09:22:46.882 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:22:46.883 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:46.884 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:46.885 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:22:46.887 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:22:46.889 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:22:46.892 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:22:46.895 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:46.896 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 9.6236ms
+2023-12-21 09:22:46.897 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:46.898 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 15.8779ms
+2023-12-21 09:22:48.115 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:22:48.116 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:48.117 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:48.118 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:22:48.120 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:22:48.122 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:22:48.125 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:22:48.129 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:48.130 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 10.6479ms
+2023-12-21 09:22:48.131 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:48.132 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 17.1002ms
+2023-12-21 09:22:49.411 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:22:49.412 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:49.414 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:49.415 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:22:49.416 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:22:49.418 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:22:49.421 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:22:49.424 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:49.425 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 8.8825ms
+2023-12-21 09:22:49.426 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:49.427 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 15.4519ms
+2023-12-21 09:22:52.279 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:22:52.280 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:52.281 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:52.282 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:22:52.284 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:22:52.286 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:22:52.289 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:22:52.292 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:52.293 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 9.4065ms
+2023-12-21 09:22:52.294 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:52.295 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 15.4449ms
+2023-12-21 09:22:56.957 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Company - -
+2023-12-21 09:22:56.958 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:56.958 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon)'
+2023-12-21 09:22:56.959 +03:00 [INF] Route matched with {action = "GetAll", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller StokTakipOtomasyon.Controllers.CompanyController (StokTakipOtomasyon).
+2023-12-21 09:22:56.960 +03:00 [INF] GetAll Companies Action Method was invoked!
+2023-12-21 09:22:56.962 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[City], [c].[CompanyCode], [c].[Country], [c].[Name], [t].[Id], [t].[City], [t].[CompanyId], [t].[Country], [t].[District], [t].[Name], [t].[Region], [t].[Id0], [t].[Description], [t].[Name0], [t].[Price], [t].[StockAmount], [t].[WareHouseId]
+FROM [Companies] AS [c]
+LEFT JOIN (
+    SELECT [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region], [p].[Id] AS [Id0], [p].[Description], [p].[Name] AS [Name0], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [WareHouses] AS [w]
+    LEFT JOIN [Products] AS [p] ON [w].[Id] = [p].[WareHouseId]
+) AS [t] ON [c].[Id] = [t].[CompanyId]
+ORDER BY [c].[Id], [t].[Id]
+2023-12-21 09:22:56.965 +03:00 [INF] Finished GetAll Request with the data: [{"Id":1,"Name":"Bosch","Country":"Germany","City":"Dortmund","CompanyCode":"110"},{"Id":2,"Name":"Siemens AG","Country":"Germany","City":"M\u00FCnchen","CompanyCode":"1010"}]
+2023-12-21 09:22:56.966 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.CompanyDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:56.967 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon) in 6.7901ms
+2023-12-21 09:22:56.968 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.CompanyController.GetAll (StokTakipOtomasyon)'
+2023-12-21 09:22:56.969 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Company - - - 200 - application/json;+charset=utf-8 12.2828ms
+2023-12-21 09:22:57.538 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - -
+2023-12-21 09:22:57.539 +03:00 [INF] CORS policy execution successful.
+2023-12-21 09:22:57.539 +03:00 [INF] Executing endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:57.540 +03:00 [INF] Route matched with {action = "GetAllProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProducts(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller StokTakipOtomasyon.Controllers.ProductController (StokTakipOtomasyon).
+2023-12-21 09:22:57.542 +03:00 [INF] GetAll Action Method was invoked
+2023-12-21 09:22:57.544 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [t].[Price], [t].[StockAmount], [t].[WareHouseId], [w].[Id], [w].[City], [w].[CompanyId], [w].[Country], [w].[District], [w].[Name], [w].[Region]
+FROM (
+    SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[StockAmount], [p].[WareHouseId]
+    FROM [Products] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [WareHouses] AS [w] ON [t].[WareHouseId] = [w].[Id]
+2023-12-21 09:22:57.546 +03:00 [INF] Finished GetAllProducts request with the data: [{"Id":4,"Name":"Industrial Robot","Description":"High-precision robotic arm for industrial automation","Price":2000.00,"StockAmount":10},{"Id":5,"Name":"Temperature Controller","Description":"Advanced temperature control system for industrial processes","Price":120.00,"StockAmount":15},{"Id":6,"Name":"Conveyor Belt System","Description":"Automated conveyor system for efficient material handling","Price":800.00,"StockAmount":8},{"Id":7,"Name":"PLC Programming Software","Description":"Software for programming and controlling PLC machines","Price":50.00,"StockAmount":20},{"Id":8,"Name":"Pressure Sensor","Description":"High-accuracy pressure sensor for industrial applications","Price":80.00,"StockAmount":12},{"Id":9,"Name":"Motor Drive Unit","Description":"Powerful motor drive unit for machinery automation","Price":300.00,"StockAmount":7},{"Id":10,"Name":"Programmable HMI Panel","Description":"Human Machine Interface panel for intuitive machine control","Price":180.00,"StockAmount":10},{"Id":11,"Name":"Automated Packaging Machine","Description":"High-speed machine for automated packaging","Price":1800.00,"StockAmount":8},{"Id":12,"Name":"Vibration Sensor","Description":"Sensor for monitoring vibrations in industrial equipment","Price":90.00,"StockAmount":15},{"Id":13,"Name":"PLC Expansion Module","Description":"Expansion module for extending PLC capabilities","Price":75.00,"StockAmount":10}]
+2023-12-21 09:22:57.550 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StokTakipOtomasyon.Models.DTO.ProductDto, StokTakipOtomasyon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-12-21 09:22:57.551 +03:00 [INF] Executed action StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon) in 9.5418ms
+2023-12-21 09:22:57.552 +03:00 [INF] Executed endpoint 'StokTakipOtomasyon.Controllers.ProductController.GetAllProducts (StokTakipOtomasyon)'
+2023-12-21 09:22:57.553 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7233/api/Product?pageNumber=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 15.1406ms
