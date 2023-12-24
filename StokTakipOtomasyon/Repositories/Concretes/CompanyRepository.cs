@@ -86,5 +86,31 @@ namespace StokTakipOtomasyon.Repositories.Concretes
             return companyDomainModel;
 
         }
+
+        public async Task<Company?> UpdateCompanyNameAsync(int id, string? companyName)
+        {
+            // Find existing company
+            var company = await _dbContext.Companies
+                            .Include(company => company.WareHouses)
+                            .FirstOrDefaultAsync(c => c.Id == id);
+
+            // Check if exists
+            if (company is null)
+            {
+                return null;
+            }
+
+            // Check if new company name blank
+            if (!String.IsNullOrWhiteSpace(companyName))
+            {
+                // Update Company Name property
+                company.Name = companyName;
+            }
+
+            // Save changes
+            await _dbContext.SaveChangesAsync();
+            return company;
+
+        }
     }
 }

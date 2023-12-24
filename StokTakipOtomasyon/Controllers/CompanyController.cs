@@ -30,6 +30,7 @@ namespace StokTakipOtomasyon.Controllers
 
         // GET ALL : /api/Company/
         [HttpGet]
+        [ResponseCache(CacheProfileName = "Default 60")]
         public async Task<IActionResult> GetAll()
         {
             // Loging that method invoked
@@ -166,6 +167,24 @@ namespace StokTakipOtomasyon.Controllers
             // Map Domain Model to DTO
             return Ok(mapper.Map<CompanyDto>(companyDomainModel));
 
+        }
+
+
+        // PATCH: /api/Company/id?companyName=name
+        [HttpPatch]
+        [Route("{id:int}")]
+        public async Task<IActionResult> UpdateCompanyName([FromRoute] int id, [FromQuery] string? companyName)
+        {
+            // Find existing company with given Id
+            var companyDomainModel = await companyRepository.UpdateCompanyNameAsync(id, companyName);
+
+            if (companyDomainModel is null)
+            {
+                throw new CompanyNotFoundException($"There is not any company with Id:{id} found");
+            }
+
+            // Map Domain Model To DTO
+            return Ok(mapper.Map<CompanyDto>(companyDomainModel));
         }
 
 
