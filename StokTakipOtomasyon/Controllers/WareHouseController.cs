@@ -31,7 +31,8 @@ namespace StokTakipOtomasyon.Controllers
 
         // GET ALL: /api/WareHouse/filterOn=Name&filterQuery=Fabrik&sortBy=Name&isAscending=true&pageNumber=1&pageSize=3
         [HttpGet]
-        [Authorize(Roles = "Reader")]
+        [ResponseCache(CacheProfileName = "Long 120")]
+        [Authorize(Roles = "WarehouseManager")]
         public async Task<IActionResult> GetAllWareHouses([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber=1, [FromQuery] int pageSize=3)
         {
@@ -53,7 +54,7 @@ namespace StokTakipOtomasyon.Controllers
         // GET By Id: /api/WareHouse/{id}
         [HttpGet]
         [Route("{id=int}")]
-        [Authorize(Roles = "Reader")]
+        [Authorize(Roles = "Reader, WarehouseManager")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             // Log that informs method was invoked

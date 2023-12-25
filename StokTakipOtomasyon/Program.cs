@@ -28,6 +28,8 @@ builder.Logging.AddSerilog(logger);
 builder.Services.AddResponseCaching();
 
 
+
+// Configure Cache Profiles
 builder.Services.AddControllers(option =>
 {
     option.CacheProfiles.Add("Default 60",
@@ -35,7 +37,15 @@ builder.Services.AddControllers(option =>
         {
             Duration = 60
         });
+
+    option.CacheProfiles.Add("Long 120",
+        new CacheProfile()
+        {
+            Duration = 120
+        });
 });
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
