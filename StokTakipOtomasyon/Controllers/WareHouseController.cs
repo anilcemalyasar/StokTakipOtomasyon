@@ -30,6 +30,16 @@ namespace StokTakipOtomasyon.Controllers
 
 
         // GET ALL: /api/WareHouse/filterOn=Name&filterQuery=Fabrik&sortBy=Name&isAscending=true&pageNumber=1&pageSize=3
+        /// <summary>
+        ///  Get All Warehouses
+        /// </summary>
+        /// <param name="filterOn"></param>
+        /// <param name="filterQuery"></param>
+        /// <param name="sortBy"></param>
+        /// <param name="isAscending"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
         [HttpGet]
         [ResponseCache(CacheProfileName = "Long 120")]
         [Authorize(Roles = "WarehouseManager")]
@@ -52,6 +62,11 @@ namespace StokTakipOtomasyon.Controllers
 
 
         // GET By Id: /api/WareHouse/{id}
+        /// <summary>
+        /// Get Warehouse By Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{id=int}")]
         [Authorize(Roles = "Reader, WarehouseManager")]
