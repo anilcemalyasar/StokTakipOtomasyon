@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StokTakipOtomasyon.Exceptions;
 using StokTakipOtomasyon.Models.Domain;
 using StokTakipOtomasyon.Models.DTO;
 using StokTakipOtomasyon.Repositories.Abstracts;
@@ -81,7 +82,7 @@ namespace StokTakipOtomasyon.Controllers
             // Check if domain model exists
             if (wareHouse is null)
             {
-                return NotFound();
+                throw new WarehouseNotFoundException("Sorry, the company with given ID not found!");
             }
 
             // Serialize domain model with given Id and log to console
@@ -96,15 +97,22 @@ namespace StokTakipOtomasyon.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateWarehouse([FromBody] AddWareHouseRequestDto addWareHouseRequestDto)
         {
+            // Log that informs create method invoked
+            _logger.LogInformation("CreateWarehouse action method was invoked!");
+
             // Map DTO to Domain Model
             var warehouseDomain = _mapper.Map<WareHouse>(addWareHouseRequestDto);
 
             warehouseDomain = await _wareHouseRepository.CreateAsync(warehouseDomain, addWareHouseRequestDto.CompanyId);
 
+            // Check if created
             if (warehouseDomain is null)
             {
-                return NotFound("Sorry, the company with given ID not found!");
+                throw new WarehouseNotFoundException("Sorry, the company could not be created!");
             }
+
+            // Logging created warehouse
+            _logger.LogInformation($"Finished CreateWarehouse request with the data: {JsonSerializer.Serialize(warehouseDomain)}");
 
             return Ok(_mapper.Map<WareHouseDto>(warehouseDomain));
         }
@@ -124,7 +132,7 @@ namespace StokTakipOtomasyon.Controllers
 
             if (warehouseDomainModel is null)
             {
-                return NotFound();
+                throw new WarehouseNotFoundException("Sorry, the company with given ID not found!");
             }
 
             // Map Domain Model back to DTO
@@ -134,6 +142,12 @@ namespace StokTakipOtomasyon.Controllers
 
 
         // DELETE: /api/WareHouse/{id}
+        /// <summary>
+        /// Delete Warehouse by giving its ID
+        /// </summary>
+        /// <param name="id">Warehouse Id</param>
+        /// <returns></returns>
+        /// <exception cref="WarehouseNotFoundException"></exception>
         [HttpDelete]
         [Route("{id=int}")]
         public async Task<IActionResult> DeleteWarehouse([FromRoute] int id)
@@ -142,7 +156,7 @@ namespace StokTakipOtomasyon.Controllers
 
             if (wareHouse is null)
             {
-                return NotFound("Sorry, the warehouse with given ID not found!");
+                throw new WarehouseNotFoundException("Sorry, the company with given ID not found!");
             }
 
             // Map Domain Model To DTO

@@ -51,7 +51,17 @@ builder.Services.AddControllers(option =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Stok Takip API", Version = "v1" });
+    options.SwaggerDoc("v1", new OpenApiInfo 
+    { 
+        Title = "Stok Takip API", 
+        Version = "v1",
+        Description = "An ASP.NET Core Web API application for managing inventory",
+        Contact = new OpenApiContact()
+        {
+            Name = "github.com/anilcemalyasar",
+            Url = new Uri("https://github.com/anilcemalyasar")
+        }
+    });
 
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -152,6 +162,9 @@ app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+
+app.UseResponseCaching();
+
 app.UseAuthorization();
 
 app.MapControllers();

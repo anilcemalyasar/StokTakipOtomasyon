@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StokTakipOtomasyon.Exceptions;
@@ -11,6 +12,7 @@ using System.Text.Json;
 namespace StokTakipOtomasyon.Controllers
 {
     [Route("api/[controller]")]
+    [ResponseCache(CacheProfileName = "Default 60")]
     [ApiController]
     public class CompanyController : ControllerBase
     {
@@ -29,8 +31,11 @@ namespace StokTakipOtomasyon.Controllers
         }
 
         // GET ALL : /api/Company/
+        /// <summary>
+        /// Get All Companies
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        [ResponseCache(CacheProfileName = "Default 60")]
         public async Task<IActionResult> GetAll()
         {
             // Loging that method invoked
@@ -57,6 +62,14 @@ namespace StokTakipOtomasyon.Controllers
             return Ok(companyDtos);
         }
 
+
+        // GET : /api/Company/{id}
+        /// <summary>
+        /// Get Company By Id
+        /// </summary>
+        /// <param name="id">It has to be integer id</param>
+        /// <returns></returns>
+        /// <exception cref="CompanyNotFoundException"></exception>
         [HttpGet]
         [Route("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
@@ -76,7 +89,13 @@ namespace StokTakipOtomasyon.Controllers
 
         
         // POST : /api/Company
+        /// <summary>
+        /// Create New Company
+        /// </summary>
+        /// <param name="addCompanyDto"></param>
+        /// <returns></returns>
         [HttpPost]
+        [Authorize(Roles = "CompanyManager")]
         public async Task<IActionResult> AddCompany([FromBody] AddCompanyDto addCompanyDto)
         {
             // Map DTO to Domain Model
@@ -100,6 +119,7 @@ namespace StokTakipOtomasyon.Controllers
         // PUT : /api/Company/id={}&wareHouseId={}
         [HttpPut]
         [Route("Update/{id:int}")]
+        [Authorize(Roles = "CompanyManager")]
         public async Task<IActionResult> AssignWarehouseToCompany([FromRoute] int id, [FromQuery] int wareHouseId)
         {
             var wareHouseDomain = await wareHouseRepository.GetByIdAsync(wareHouseId);
@@ -120,8 +140,18 @@ namespace StokTakipOtomasyon.Controllers
             return Ok(mapper.Map<CompanyDto>(companyDomainModel));
         }
 
+
+        // PUT: /api/Company/id={}
+        /// <summary>
+        /// Update existing company
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="updateCompanyRequestDto">Updated company informations</param>
+        /// <returns></returns>
+        /// <exception cref="CompanyNotFoundException"></exception>
         [HttpPut]
         [Route("{id:int}")]
+        [Authorize(Roles = "CompanyManager")]
         public async Task<IActionResult> UpdateCompany([FromRoute] int id, [FromBody] UpdateCompanyRequestDto updateCompanyRequestDto)
         {
 
@@ -148,6 +178,7 @@ namespace StokTakipOtomasyon.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize(Roles = "CompanyManager")]
         public async Task<IActionResult> DeleteCompany([FromRoute] int id)
         {
             var companyDomainModel = await companyRepository.GetByIdAsync(id);
@@ -173,6 +204,7 @@ namespace StokTakipOtomasyon.Controllers
         // PATCH: /api/Company/id?companyName=name
         [HttpPatch]
         [Route("{id:int}")]
+        [Authorize(Roles = "CompanyManager")]
         public async Task<IActionResult> UpdateCompanyName([FromRoute] int id, [FromQuery] string? companyName)
         {
             // Find existing company with given Id

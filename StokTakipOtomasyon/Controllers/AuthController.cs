@@ -20,6 +20,11 @@ namespace StokTakipOtomasyon.Controllers
         }
 
         // POST: /api/Auth/Register
+        /// <summary>
+        /// Register with required informations such as username, password and roles
+        /// </summary>
+        /// <param name="registerRequestDto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto registerRequestDto)
@@ -51,6 +56,11 @@ namespace StokTakipOtomasyon.Controllers
         }
 
         // POST: /api/Auth/Login
+        /// <summary>
+        /// Log into your account after registering 
+        /// </summary>
+        /// <param name="loginRequestDto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequestDto)
