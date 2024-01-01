@@ -21,6 +21,7 @@ namespace StokTakipOtomasyon.Repositories.Concretes
             return category;
         }
 
+
         public async Task<Category?> DeleteByIdAsync(int id)
         {
             // Find domain model with given id
@@ -41,14 +42,25 @@ namespace StokTakipOtomasyon.Repositories.Concretes
             return await _dbContext.Categories.ToListAsync();
         }
 
+
         public async Task<Category?> GetByIdAsync(int id)
         {
             return await _dbContext.Categories.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public Task<Category?> UpdateAsync(int id, Category category)
+        public async Task<Category?> UpdateAsync(int id, Category category)
         {
-            throw new NotImplementedException();
+            // Find domain model with given id
+            var existingCategory = await _dbContext.Categories.FirstOrDefaultAsync(c => c.Id == id);
+
+            if (existingCategory is null)
+            {
+                return null;
+            }
+
+            existingCategory.Name = category.Name;
+            await _dbContext.SaveChangesAsync();
+            return existingCategory;
         }
     }
 }
