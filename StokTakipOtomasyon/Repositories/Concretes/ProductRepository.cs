@@ -26,13 +26,21 @@ namespace StokTakipOtomasyon.Repositories.Concretes
                 return null;
             }
 
+            var company = await _dbContext.Categories.FirstOrDefaultAsync(c => c.Id ==  request.CategoryId);
+
+            if (company == null)
+            {
+                return null;
+            }
+
             var product = new Product
             {
                 Name = request.Name,
                 Description = request.Description,
                 StockAmount = request.StockAmount,
                 Price = request.Price,
-                WareHouse = warehouse
+                WareHouse = warehouse,
+                Category = company
             };
 
             await _dbContext.Products.AddAsync(product);

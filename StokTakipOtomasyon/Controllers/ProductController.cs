@@ -32,15 +32,25 @@ namespace StokTakipOtomasyon.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Create New Product
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        /// <exception cref="ProductNotFoundException"></exception>
         [HttpPost]
         public async Task<IActionResult> AddProduct([FromBody] AddProductRequestDto request)
         {
             var product = await _productRepository.AddProductAsync(request);
+
             if (product == null)
             {
-                return NotFound();
+                throw new ProductNotFoundException("Sorry, this product could not be created!");
             }
-            return Ok(product);
+
+            // Map created domain model to DTO
+            _logger.LogInformation($"Finished AddProduct request with the data: {JsonSerializer.Serialize(product)}");
+            return Ok(_mapper.Map<ProductDto>(product));
         }
 
         // GET PRODUCTS 
@@ -61,6 +71,13 @@ namespace StokTakipOtomasyon.Controllers
             return Ok(_mapper.Map<List<ProductDto>>(products));
         }
 
+
+        /// <summary>
+        /// Get Product By Id
+        /// </summary>
+        /// <param name="id">Product Id</param>
+        /// <returns></returns>
+        /// <exception cref="ProductNotFoundException"></exception>
         [HttpGet("{id:int}")]
         [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetById([FromRoute] int id)

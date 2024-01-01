@@ -13,5 +13,8 @@ namespace StokTakipOtomasyon.Models.Domain
 
         [JsonIgnore]
         public WareHouse WareHouse { get; set; }// Required reference navigation to principal
+
+        [JsonIgnore]
+        public Category Category { get; set; }
     }
 }

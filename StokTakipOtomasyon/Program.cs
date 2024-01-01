@@ -106,6 +106,7 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IWareHouseRepository, WareHouseRepository>();
 builder.Services.AddTransient<ITokenRepository, TokenRepository>();
 builder.Services.AddTransient<ICompanyRepository, CompanyRepository>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ExceptionHandlerMiddleware>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));

@@ -66,8 +66,9 @@ namespace StokTakipOtomasyon.Controllers
         /// <summary>
         /// Get Warehouse By Id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Warehouse Id</param>
         /// <returns></returns>
+        /// <exception cref="WarehouseNotFoundException"></exception>
         [HttpGet]
         [Route("{id=int}")]
         [Authorize(Roles = "Reader, WarehouseManager")]
@@ -94,7 +95,14 @@ namespace StokTakipOtomasyon.Controllers
         }
 
         // POST: /api/WareHouse
+        /// <summary>
+        /// Create New Warehouse
+        /// </summary>
+        /// <param name="addWareHouseRequestDto"></param>
+        /// <returns></returns>
+        /// <exception cref="WarehouseNotFoundException"></exception>
         [HttpPost]
+        [Authorize(Roles = "WarehouseManager")]
         public async Task<IActionResult> CreateWarehouse([FromBody] AddWareHouseRequestDto addWareHouseRequestDto)
         {
             // Log that informs create method invoked
@@ -120,9 +128,17 @@ namespace StokTakipOtomasyon.Controllers
 
 
         // PUT: /api/WareHouse/{id}
+        /// <summary>
+        /// Update Warehouse
+        /// </summary>
+        /// <param name="id">Warehouse Id</param>
+        /// <param name="updateWareHouseRequestDto"></param>
+        /// <returns></returns>
+        /// <exception cref="WarehouseNotFoundException"></exception>
         [HttpPut]
         [Route("{id=int}")]
-        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateWareHouseRequestDto updateWareHouseRequestDto)
+        [Authorize(Roles = "WarehouseManager")]
+        public async Task<IActionResult> UpdateWarehouse([FromRoute] int id, [FromBody] UpdateWareHouseRequestDto updateWareHouseRequestDto)
         {
             // Map DTO to Domain Model
             var warehouseDomainModel = _mapper.Map<WareHouse>(updateWareHouseRequestDto);

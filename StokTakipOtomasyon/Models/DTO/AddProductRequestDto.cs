@@ -8,5 +8,6 @@
         public int StockAmount { get; set; }
 
         public int WarehouseId { get; set; }
+        public int CategoryId { get; set; }
     }
 }
